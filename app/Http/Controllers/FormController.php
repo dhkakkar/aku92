@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
+use App\Models\OpdForm;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -16,7 +18,8 @@ class FormController extends Controller
             'phone' => 'nullable|string|max:20',
         ]);
 
-        // TODO: Send email / store in DB
+        ContactMessage::create($validated);
+
         return response()->json([
             'success' => true,
             'message' => 'Message sent successfully! We will get back to you soon.',
@@ -34,7 +37,8 @@ class FormController extends Controller
             'description' => 'required|string|max:2000',
         ]);
 
-        // TODO: Store in DB / send notification
+        OpdForm::create($validated);
+
         return response()->json([
             'success' => true,
             'message' => 'OPD form submitted successfully! We will contact you shortly.',
