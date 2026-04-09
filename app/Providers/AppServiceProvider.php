@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Force URL prefix for subfolder deployment
+        \Illuminate\Support\Facades\URL::forceRootUrl(config('app.url'));
     }
 }
