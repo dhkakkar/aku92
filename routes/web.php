@@ -21,13 +21,13 @@ Route::get('/product', [PageController::class, 'product']);
 Route::get('/online-medicine', [PageController::class, 'onlineMedicine']);
 Route::get('/opd-form', [PageController::class, 'opdForm']);
 
-// AKU92 section
-Route::get('/aku92', [Aku92Controller::class, 'index']);
-Route::get('/aku92/clinics', [Aku92Controller::class, 'clinics']);
-Route::get('/aku92/jain-medicines', [Aku92Controller::class, 'jainMedicines']);
-Route::get('/aku92/physiotherapy', [Aku92Controller::class, 'physiotherapy']);
-Route::get('/aku92/review', [Aku92Controller::class, 'review']);
-Route::get('/aku92/opd-form', [Aku92Controller::class, 'opdForm']);
+// AKU92 section (using /healthcare prefix to avoid collision with nginx mount)
+Route::get('/healthcare', [Aku92Controller::class, 'index']);
+Route::get('/healthcare/clinics', [Aku92Controller::class, 'clinics']);
+Route::get('/healthcare/jain-medicines', [Aku92Controller::class, 'jainMedicines']);
+Route::get('/healthcare/physiotherapy', [Aku92Controller::class, 'physiotherapy']);
+Route::get('/healthcare/review', [Aku92Controller::class, 'review']);
+Route::get('/healthcare/opd-form', [Aku92Controller::class, 'opdForm']);
 
 // Shop section
 Route::get('/shop', [ShopController::class, 'index']);

@@ -377,7 +377,7 @@
                 <div class="sidebar-link-text">Dr. Prashuka Jain<span>Healthcare Professional</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
-            <a href="{{ url('/aku92') }}" class="sidebar-link sidebar-link--aku92">
+            <a href="{{ url('/healthcare') }}" class="sidebar-link sidebar-link--aku92">
                 <div class="sidebar-link-icon"><i class="fas fa-hospital"></i></div>
                 <div class="sidebar-link-text">AKU92<span>Clinics, Pharmacy, Physio, OPD</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
@@ -426,7 +426,7 @@
                 <p class="card-v3-desc">Clinics, Medicines, Physiotherapy, Review & OPD under one roof.</p>
                 <div class="card-v3-cta"><span class="cta-line"></span> Explore <i class="fas fa-arrow-right"></i></div>
             </div>
-            <a href="{{ url('/aku92') }}"></a>
+            <a href="{{ url('/healthcare') }}"></a>
         </div>
 
         <div class="card-v3 card-v3--shop">

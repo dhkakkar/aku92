@@ -259,27 +259,27 @@
         </div>
 
         <nav class="sidebar-nav">
-            <a href="{{ url('/aku92/clinics') }}" class="sidebar-link">
+            <a href="{{ url('/healthcare/clinics') }}" class="sidebar-link">
                 <div class="sidebar-link-icon"><i class="fas fa-clinic-medical"></i></div>
                 <div class="sidebar-link-text">Aku92 Clinics<span>Multi-specialty OPD</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
-            <a href="{{ url('/aku92/jain-medicines') }}" class="sidebar-link">
+            <a href="{{ url('/healthcare/jain-medicines') }}" class="sidebar-link">
                 <div class="sidebar-link-icon"><i class="fas fa-pills"></i></div>
                 <div class="sidebar-link-text">Jain Medicines<span>Pharmacy since 1987</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
-            <a href="{{ url('/aku92/physiotherapy') }}" class="sidebar-link">
+            <a href="{{ url('/healthcare/physiotherapy') }}" class="sidebar-link">
                 <div class="sidebar-link-icon"><i class="fas fa-hand-holding-medical"></i></div>
                 <div class="sidebar-link-text">Aku Physiotherapy<span>Pain relief & rehab</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
-            <a href="{{ url('/aku92/review') }}" class="sidebar-link">
+            <a href="{{ url('/healthcare/review') }}" class="sidebar-link">
                 <div class="sidebar-link-icon"><i class="fas fa-book-medical"></i></div>
                 <div class="sidebar-link-text">Aku Review<span>Medical publications</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
-            <a href="{{ url('/aku92/opd-form') }}" class="sidebar-link">
+            <a href="{{ url('/healthcare/opd-form') }}" class="sidebar-link">
                 <div class="sidebar-link-icon"><i class="fas fa-file-medical"></i></div>
                 <div class="sidebar-link-text">OPD Form<span>Book appointment</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
@@ -307,7 +307,7 @@
                 <p class="card-hub-desc">Outpatient care inside Santosh Hospital, Gobindpuri, Kanhaya Chowk.</p>
                 <div class="card-hub-cta"><span class="cta-line"></span> Explore <i class="fas fa-arrow-right"></i></div>
             </div>
-            <a href="{{ url('/aku92/clinics') }}"></a>
+            <a href="{{ url('/healthcare/clinics') }}"></a>
         </div>
 
         <div class="card-hub">
@@ -320,7 +320,7 @@
                 <p class="card-hub-desc">Quality medicines at affordable prices for over 36 years.</p>
                 <div class="card-hub-cta"><span class="cta-line"></span> Explore <i class="fas fa-arrow-right"></i></div>
             </div>
-            <a href="{{ url('/aku92/jain-medicines') }}"></a>
+            <a href="{{ url('/healthcare/jain-medicines') }}"></a>
         </div>
 
         <div class="card-hub">
@@ -333,7 +333,7 @@
                 <p class="card-hub-desc">Expert pain relief & rehabilitation at Shivaji Park Chowk.</p>
                 <div class="card-hub-cta"><span class="cta-line"></span> Explore <i class="fas fa-arrow-right"></i></div>
             </div>
-            <a href="{{ url('/aku92/physiotherapy') }}"></a>
+            <a href="{{ url('/healthcare/physiotherapy') }}"></a>
         </div>
 
         <div class="card-hub">
@@ -346,7 +346,7 @@
                 <p class="card-hub-desc">Medical publications, MCQ books & educational resources.</p>
                 <div class="card-hub-cta"><span class="cta-line"></span> Explore <i class="fas fa-arrow-right"></i></div>
             </div>
-            <a href="{{ url('/aku92/review') }}"></a>
+            <a href="{{ url('/healthcare/review') }}"></a>
         </div>
 
         <div class="card-hub">
@@ -370,7 +370,7 @@
                 <p class="card-hub-desc">Register for outpatient services online.</p>
                 <div class="card-hub-cta"><span class="cta-line"></span> Fill Form <i class="fas fa-arrow-right"></i></div>
             </div>
-            <a href="{{ url('/aku92/opd-form') }}"></a>
+            <a href="{{ url('/healthcare/opd-form') }}"></a>
         </div>
 
     </div>

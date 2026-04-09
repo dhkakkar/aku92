@@ -1,11 +1,11 @@
 @php
 $aku92Nav = [
-    ['title' => 'AKU92 Home', 'url' => '/aku92', 'icon' => 'fas fa-home'],
-    ['title' => 'Clinics', 'url' => '/aku92/clinics', 'icon' => 'fas fa-clinic-medical'],
-    ['title' => 'Jain Medicines', 'url' => '/aku92/jain-medicines', 'icon' => 'fas fa-pills'],
-    ['title' => 'Physiotherapy', 'url' => '/aku92/physiotherapy', 'icon' => 'fas fa-hand-holding-medical'],
-    ['title' => 'Aku Review', 'url' => '/aku92/review', 'icon' => 'fas fa-book-medical'],
-    ['title' => 'OPD Form', 'url' => '/aku92/opd-form', 'icon' => 'fas fa-file-medical'],
+    ['title' => 'AKU92 Home', 'url' => '/healthcare', 'icon' => 'fas fa-home'],
+    ['title' => 'Clinics', 'url' => '/healthcare/clinics', 'icon' => 'fas fa-clinic-medical'],
+    ['title' => 'Jain Medicines', 'url' => '/healthcare/jain-medicines', 'icon' => 'fas fa-pills'],
+    ['title' => 'Physiotherapy', 'url' => '/healthcare/physiotherapy', 'icon' => 'fas fa-hand-holding-medical'],
+    ['title' => 'Aku Review', 'url' => '/healthcare/review', 'icon' => 'fas fa-book-medical'],
+    ['title' => 'OPD Form', 'url' => '/healthcare/opd-form', 'icon' => 'fas fa-file-medical'],
 ];
 @endphp
 

@@ -58,7 +58,7 @@
                 <div class="aku92-divider mx-auto"></div>
                 <p><i class="fas fa-map-marker-alt text-danger"></i> 62, Shivaji Park Chowk, Yamunanagar</p>
                 <p><i class="fas fa-phone-alt text-primary"></i> <a href="tel:0173220062">0173 220062</a></p>
-                <a href="{{ url('/aku92/opd-form') }}" class="btn btn-success btn-lg mt-3">
+                <a href="{{ url('/healthcare/opd-form') }}" class="btn btn-success btn-lg mt-3">
                     <i class="fas fa-calendar-check"></i> Book Appointment
                 </a>
             </div>

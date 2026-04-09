@@ -92,7 +92,7 @@
                     <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Address:</strong> Inside Santosh Hospital, Gobindpuri, Kanhaya Chowk, Yamunanagar, 135001, Haryana</p>
                     <p><i class="fas fa-phone-alt text-primary"></i> <strong>Phone:</strong> <a href="tel:{{ config('site.phone') }}">{{ config('site.phone_display') }}</a></p>
                 </div>
-                <a href="{{ url('/aku92/opd-form') }}" class="btn btn-success btn-lg mt-3">
+                <a href="{{ url('/healthcare/opd-form') }}" class="btn btn-success btn-lg mt-3">
                     <i class="fas fa-calendar-check"></i> Book Appointment (OPD Form)
                 </a>
             </div>
