@@ -8,7 +8,7 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="{{ url('/aku92/shop') }}">Shop</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/shop') }}">Shop</a></li>
                 <li class="breadcrumb-item active">Cart</li>
             </ol>
         </nav>
@@ -24,7 +24,7 @@
             <i class="fas fa-shopping-cart fa-4x mb-3" style="color: var(--mid);"></i>
             <h4 style="color: var(--gray);">Your cart is empty</h4>
             <p style="color: var(--mid);">Add some products to get started.</p>
-            <a href="{{ url('/aku92/shop') }}" class="btn btn-primary mt-2"><i class="fas fa-arrow-left"></i> Browse Products</a>
+            <a href="{{ url('/shop') }}" class="btn btn-primary mt-2"><i class="fas fa-arrow-left"></i> Browse Products</a>
         </div>
 
         <div class="row">
@@ -55,10 +55,10 @@
                         <strong>Total</strong>
                         <strong class="text-success fs-5" id="cartTotal">₹0</strong>
                     </div>
-                    <a href="{{ url('/aku92/shop/checkout') }}" class="btn btn-success btn-lg w-100 mb-2">
+                    <a href="{{ url('/shop/checkout') }}" class="btn btn-success btn-lg w-100 mb-2">
                         <i class="fas fa-lock"></i> Proceed to Checkout
                     </a>
-                    <a href="{{ url('/aku92/shop') }}" class="btn btn-outline-dark w-100">
+                    <a href="{{ url('/shop') }}" class="btn btn-outline-dark w-100">
                         <i class="fas fa-arrow-left"></i> Continue Shopping
                     </a>
                 </div>
