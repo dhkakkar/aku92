@@ -7,37 +7,34 @@ use App\Http\Controllers\Aku92Controller;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FormController;
 
-// All routes under /aku92 prefix (nginx subfolder deployment)
-Route::prefix('aku92')->group(function () {
-    // Home (standalone)
-    Route::get('/', fn () => view('home'));
+// Home (standalone)
+Route::get('/', fn () => view('home'));
 
-    // Person landing pages (standalone)
-    Route::get('/dr-akash-jain', [PersonController::class, 'akashJain']);
-    Route::get('/dr-prashuka-jain', [PersonController::class, 'prashukaJain']);
+// Person landing pages (standalone)
+Route::get('/dr-akash-jain', [PersonController::class, 'akashJain']);
+Route::get('/dr-prashuka-jain', [PersonController::class, 'prashukaJain']);
 
-    // General pages (use app layout)
-    Route::get('/about', [PageController::class, 'about']);
-    Route::get('/contact', [PageController::class, 'contact']);
-    Route::get('/product', [PageController::class, 'product']);
-    Route::get('/online-medicine', [PageController::class, 'onlineMedicine']);
-    Route::get('/opd-form', [PageController::class, 'opdForm']);
+// General pages (use app layout)
+Route::get('/about', [PageController::class, 'about']);
+Route::get('/contact', [PageController::class, 'contact']);
+Route::get('/product', [PageController::class, 'product']);
+Route::get('/online-medicine', [PageController::class, 'onlineMedicine']);
+Route::get('/opd-form', [PageController::class, 'opdForm']);
 
-    // AKU92 healthcare section
-    Route::get('/healthcare', [Aku92Controller::class, 'index']);
-    Route::get('/healthcare/clinics', [Aku92Controller::class, 'clinics']);
-    Route::get('/healthcare/jain-medicines', [Aku92Controller::class, 'jainMedicines']);
-    Route::get('/healthcare/physiotherapy', [Aku92Controller::class, 'physiotherapy']);
-    Route::get('/healthcare/review', [Aku92Controller::class, 'review']);
-    Route::get('/healthcare/opd-form', [Aku92Controller::class, 'opdForm']);
+// AKU92 healthcare section
+Route::get('/healthcare', [Aku92Controller::class, 'index']);
+Route::get('/healthcare/clinics', [Aku92Controller::class, 'clinics']);
+Route::get('/healthcare/jain-medicines', [Aku92Controller::class, 'jainMedicines']);
+Route::get('/healthcare/physiotherapy', [Aku92Controller::class, 'physiotherapy']);
+Route::get('/healthcare/review', [Aku92Controller::class, 'review']);
+Route::get('/healthcare/opd-form', [Aku92Controller::class, 'opdForm']);
 
-    // Shop section
-    Route::get('/shop', [ShopController::class, 'index']);
-    Route::get('/shop/product/{id}', [ShopController::class, 'show']);
-    Route::get('/shop/cart', [ShopController::class, 'cart']);
-    Route::get('/shop/checkout', [ShopController::class, 'checkout']);
+// Shop section
+Route::get('/shop', [ShopController::class, 'index']);
+Route::get('/shop/product/{id}', [ShopController::class, 'show']);
+Route::get('/shop/cart', [ShopController::class, 'cart']);
+Route::get('/shop/checkout', [ShopController::class, 'checkout']);
 
-    // API endpoints
-    Route::post('/api/contact', [FormController::class, 'contact']);
-    Route::post('/api/opd', [FormController::class, 'opd']);
-});
+// API endpoints
+Route::post('/api/contact', [FormController::class, 'contact']);
+Route::post('/api/opd', [FormController::class, 'opd']);
