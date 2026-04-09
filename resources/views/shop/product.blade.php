@@ -32,8 +32,9 @@ $discount = round((($product['original_price'] - $product['sale_price']) / $prod
             <!-- Image -->
             <div class="col-lg-5 mb-4">
                 <div class="shop-detail-img">
+                    @php $discount = round((($product['original_price'] - $product['sale_price']) / $product['original_price']) * 100); @endphp
                     <span class="shop-badge">-{{ $discount }}%</span>
-                    <img src="{{ $product['image']) ?>" alt="<?= sanitize($product['name'] }}" class="img-fluid" id="mainProductImg">
+                    <img src="{{ asset('images/' . $product['image']) }}" alt="{{ $product['name'] }}" class="img-fluid" id="mainProductImg">
                 </div>
             </div>
 
@@ -65,7 +66,7 @@ $discount = round((($product['original_price'] - $product['sale_price']) / $prod
                     </div>
 
                     <div class="shop-detail-actions">
-                        <button class="btn btn-lg btn-dark btn-shop-add" data-id="{{ $product['id'] ?>" data-name="{{ $product['name']) ?>" data-price="<?= $product['sale_price'] }}" data-image="<?= sanitize($product['image'] }}">
+                        <button class="btn btn-lg btn-dark btn-shop-add" data-id="{{ $product['id'] }}" data-name="{{ $product['name'] }}" data-price="{{ $product['sale_price'] }}" data-image="{{ asset('images/' . $product['image']) }}">
                             <i class="fas fa-cart-plus"></i> Add to Cart
                         </button>
                         <button class="btn btn-lg btn-success btn-shop-buy" data-id="{{ $product['id'] }}">
@@ -118,12 +119,14 @@ $discount = round((($product['original_price'] - $product['sale_price']) / $prod
         <div class="mt-5">
             @include('components.section-header', ['title' => 'Related Products'])
             <div class="row">
-                
+                @foreach(config('site.products') as $rp)
+                @if($rp['id'] !== $product['id'])
+                @php $rd = round((($rp['original_price'] - $rp['sale_price']) / $rp['original_price']) * 100); @endphp
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="shop-product-card">
-                        <a href="{{ url('/shop/product/' . $rp['id']) }}" class="shop-product-link">
+                        <a href="{{ url('/aku92/shop/product/' . $rp['id']) }}" class="shop-product-link">
                             <div class="shop-product-img">
-                                <img src="{{ $rp['image']) ?>" alt="<?= sanitize($rp['name'] }}">
+                                <img src="{{ asset('images/' . $rp['image']) }}" alt="{{ $rp['name'] }}">
                                 <span class="shop-badge">-{{ $rd }}%</span>
                             </div>
                             <div class="shop-product-info">
@@ -134,11 +137,12 @@ $discount = round((($product['original_price'] - $product['sale_price']) / $prod
                                 </div>
                             </div>
                         </a>
-                        <button class="btn-shop-cart" data-id="{{ $rp['id'] ?>" data-name="{{ $rp['name']) ?>" data-price="<?= $rp['sale_price'] }}" data-image="<?= sanitize($rp['image'] }}">
+                        <button class="btn-shop-cart" data-id="{{ $rp['id'] }}" data-name="{{ $rp['name'] }}" data-price="{{ $rp['sale_price'] }}" data-image="{{ asset('images/' . $rp['image']) }}">
                             <i class="fas fa-cart-plus"></i> Add to Cart
                         </button>
                     </div>
                 </div>
+                @endif
                 @endforeach
             </div>
         </div>

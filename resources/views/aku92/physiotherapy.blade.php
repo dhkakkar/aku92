@@ -36,7 +36,17 @@
     <div class="container">
         @include('components.section-header', ['title' => 'Our Treatments'])
         <div class="row">
-            
+            @php
+            $treatments = [
+                ['icon' => 'fas fa-bone', 'title' => 'Joint Pain Relief', 'desc' => 'Treatment for knee, shoulder, back, and neck pain using advanced techniques.'],
+                ['icon' => 'fas fa-walking', 'title' => 'Post-Surgery Rehab', 'desc' => 'Rehabilitation programs after orthopedic and neurological surgeries.'],
+                ['icon' => 'fas fa-running', 'title' => 'Sports Injury', 'desc' => 'Specialized treatment for sports-related injuries and performance recovery.'],
+                ['icon' => 'fas fa-wheelchair', 'title' => 'Neuro Rehab', 'desc' => 'Physiotherapy for stroke, paralysis, and neurological conditions.'],
+                ['icon' => 'fas fa-spa', 'title' => 'Pain Management', 'desc' => 'Electrotherapy, ultrasound, and manual therapy for chronic pain conditions.'],
+                ['icon' => 'fas fa-child', 'title' => 'Pediatric Physio', 'desc' => 'Physiotherapy for children with developmental and movement disorders.'],
+            ];
+            @endphp
+            @foreach($treatments as $t)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="aku92-service-card">
                     <i class="{{ $t['icon'] }} fa-2x mb-3"></i>

@@ -42,7 +42,7 @@
                     <div class="aku92-pub-body">
                         <h5>MCQ's in Cardiology</h5>
                         <p>Comprehensive multiple-choice questions covering cardiology for competitive exam preparation.</p>
-                        <span class="aku92-pub-price">&#8377;{{ number_format(796) ?> <del><?= formatPrice(995) }}</del></span>
+                        <span class="aku92-pub-price">&#8377;796 <del>&#8377;995</del></span>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <div class="aku92-pub-body">
                         <h5>Aku Review Journal</h5>
                         <p>Medical review journal with clinical insights and case studies for healthcare professionals.</p>
-                        <span class="aku92-pub-price">&#8377;{{ number_format(450) ?> <del><?= formatPrice(500) }}</del></span>
+                        <span class="aku92-pub-price">&#8377;450 <del>&#8377;500</del></span>
                     </div>
                 </div>
             </div>
