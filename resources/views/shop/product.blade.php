@@ -102,11 +102,11 @@ $discount = round((($product['original_price'] - $product['sale_price']) / $prod
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="reviewsTab">
-                    
+                    @foreach(config('site.testimonials') as $t)
                     <div class="shop-review mb-3 pb-3 border-bottom">
                         <div class="d-flex align-items-center gap-2 mb-2">
                             <strong>{{ $t['name'] }}</strong>
-                            <span class="text-warning">{{ renderStars($t['rating']) }}</span>
+                            <span class="text-warning">@for($i=0;$i<$t['rating'];$i++)<i class="fas fa-star"></i>@endfor</span>
                         </div>
                         <p class="mb-0 text-muted">"{{ $t['text'] }}"</p>
                     </div>
