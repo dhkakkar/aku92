@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
@@ -17,7 +18,9 @@ return new class extends Migration {
             $table->string('featured_image')->nullable();
             $table->string('category')->nullable();
             $table->string('author')->nullable();
-            $table->boolean('is_published')->default(true);
+            // Use DB::raw('true') to emit a Postgres-valid boolean literal
+            // (default(true) generates default '1' which Postgres rejects).
+            $table->boolean('is_published')->default(DB::raw('true'));
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
