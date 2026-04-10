@@ -6,6 +6,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\Aku92Controller;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\BlogController;
 
 // Home (standalone)
 Route::get('/', fn () => view('home'));
@@ -34,6 +35,10 @@ Route::get('/shop', [ShopController::class, 'index']);
 Route::get('/shop/product/{id}', [ShopController::class, 'show']);
 Route::get('/shop/cart', [ShopController::class, 'cart']);
 Route::get('/shop/checkout', [ShopController::class, 'checkout']);
+
+// Blog
+Route::get('/blog/owner/{owner}', [BlogController::class, 'ownerIndex'])->name('blog.owner');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // API endpoints
 Route::post('/api/contact', [FormController::class, 'contact']);

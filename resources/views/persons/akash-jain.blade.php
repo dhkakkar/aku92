@@ -171,6 +171,23 @@
         .extra-item:last-child { border-bottom: none; }
         .extra-item i { color: var(--gold); margin-top: 5px; font-size: 0.6rem; flex-shrink: 0; }
 
+        /* ── Blog ── */
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+        .blog-card { display: flex; flex-direction: column; border: 1px solid var(--border-subtle); background: rgba(255,255,255,0.01); transition: all 0.3s; overflow: hidden; }
+        .blog-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+        .blog-card-img { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: var(--card); }
+        .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .blog-card:hover .blog-card-img img { transform: scale(1.05); }
+        .blog-card-img.placeholder { display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 2rem; opacity: 0.4; }
+        .blog-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+        .blog-card-cat { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 10px; }
+        .blog-card-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--white); margin-bottom: 10px; line-height: 1.35; }
+        .blog-card-excerpt { font-size: 0.88rem; color: var(--gray); font-weight: 300; line-height: 1.7; flex: 1; margin-bottom: 14px; }
+        .blog-card-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border-subtle); font-size: 0.75rem; color: var(--mid); }
+        .blog-card-meta .read-more { color: var(--gold); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+        .blog-empty { text-align: center; padding: 40px 20px; color: var(--mid); font-style: italic; font-weight: 200; }
+        .blog-view-all { display: block; margin: 36px auto 0; width: fit-content; }
+
         /* ── Footer ── */
         .foot { padding: 28px 5%; text-align: center; border-top: 1px solid var(--border-subtle); font-size: 0.75rem; color: var(--mid); }
         .foot a { color: var(--gold); }
@@ -196,6 +213,7 @@
             .books-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .section-title { font-size: 2.2rem; }
+            .blog-grid { grid-template-columns: 1fr; gap: 18px; }
         }
     </style>
     @endverbatim
@@ -205,7 +223,7 @@
 <nav class="nav">
     <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}"><span>AKU 92</span></a>
     <div class="nav-links" id="navLinks">
-        <a href="#education">Education</a><a href="#expertise">Expertise</a><a href="#publications">Research</a><a href="#books">Books</a><a href="#contact">Contact</a>
+        <a href="#education">Education</a><a href="#expertise">Expertise</a><a href="#publications">Research</a><a href="#books">Books</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
     </div>
     <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"><i class="fas fa-bars"></i></button>
 </nav>
@@ -332,6 +350,37 @@
             <div class="extra-item"><i class="fas fa-circle"></i><span>Routinely writing <strong>articles in daily Indian newspapers</strong> on healthcare issues.</span></div>
             <div class="extra-item"><i class="fas fa-circle"></i><span><strong>Medical Editor</strong>: Aku Review (HARENG/2014/61876)</span></div>
         </div>
+    </div>
+</section>
+
+<section class="section" id="blog">
+    <div class="container">
+        <div class="section-header"><div class="section-label">Insights</div><h2 class="section-title">Latest Articles</h2><p class="section-sub">Recent writings, healthcare insights, and updates from Dr. Akash Jain.</p></div>
+        @if(isset($blogPosts) && $blogPosts->count())
+            <div class="blog-grid">
+                @foreach($blogPosts as $post)
+                    <a href="{{ route('blog.show', $post->slug) }}" class="blog-card">
+                        @if($post->featured_image)
+                            <div class="blog-card-img"><img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}"></div>
+                        @else
+                            <div class="blog-card-img placeholder"><i class="fas fa-newspaper"></i></div>
+                        @endif
+                        <div class="blog-card-body">
+                            @if($post->category)<div class="blog-card-cat">{{ $post->category }}</div>@endif
+                            <h3 class="blog-card-title">{{ $post->title }}</h3>
+                            @if($post->excerpt)<p class="blog-card-excerpt">{{ \Illuminate\Support\Str::limit($post->excerpt, 130) }}</p>@endif
+                            <div class="blog-card-meta">
+                                <span><i class="far fa-calendar"></i> {{ $post->published_at?->format('d M Y') }}</span>
+                                <span class="read-more">Read &rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+            <a href="{{ route('blog.owner', 'dr-akash-jain') }}" class="btn-gold-outline blog-view-all">View All Articles <i class="fas fa-arrow-right"></i></a>
+        @else
+            <p class="blog-empty">Articles coming soon. Check back later for the latest insights from Dr. Akash Jain.</p>
+        @endif
     </div>
 </section>
 
