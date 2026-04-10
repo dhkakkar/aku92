@@ -144,6 +144,16 @@
         .firm-card-v3 p { font-size: 0.85rem; color: var(--mid); font-weight: 200; margin-bottom: 6px; }
         .firm-card-v3 .firm-role { font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
 
+        /* ── Publications / Books ── */
+        .pubs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 0 auto; }
+        .pub-book-card { padding: 24px; border: 1px solid var(--border-subtle); transition: all 0.3s; }
+        .pub-book-card:hover { border-color: var(--border); }
+        .pub-book-badge { display: inline-block; padding: 3px 10px; font-size: 0.6rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+        .pub-book-badge.author { background: var(--gold-soft); color: var(--gold); border: 1px solid var(--border); }
+        .pub-book-badge.chapter { background: rgba(255,255,255,0.02); color: var(--mid); border: 1px solid var(--border-subtle); }
+        .pub-book-card h4 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--white); margin-bottom: 6px; line-height: 1.4; }
+        .pub-book-card p { font-size: 0.85rem; color: var(--mid); font-weight: 200; line-height: 1.6; }
+
         /* ── Contact ── */
         .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
         .contact-card { text-align: center; padding: 32px 20px; border: 1px solid var(--border-subtle); transition: all 0.3s; }
@@ -196,6 +206,7 @@
             .contact-grid { grid-template-columns: 1fr; }
             .section-title { font-size: 2.2rem; }
             .blog-grid { grid-template-columns: 1fr; gap: 18px; }
+            .pubs-grid { grid-template-columns: 1fr; }
         }
     </style>
     @endverbatim
@@ -205,7 +216,7 @@
 <nav class="nav">
     <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}"><span>AKU 92</span></a>
     <div class="nav-links" id="navLinks">
-        <a href="{{ url('/') }}">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#expertise">Expertise</a><a href="#journey">Journey</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+        <a href="{{ url('/') }}">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#publications">Publications</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
     </div>
     <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"><i class="fas fa-bars"></i></button>
 </nav>
@@ -214,19 +225,19 @@
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-text">
-            <div class="hero-label"><span class="line"></span><span>Healthcare Professional</span></div>
+            <div class="hero-label"><span class="line"></span><span>Clinical Cardiologist</span></div>
             <h1 class="hero-name">Dr. Prashuka Jain</h1>
-            <p class="hero-title">Co-Director, Aku92 Clinics (unit of Aku92 Medical Industries Pvt Ltd)</p>
-            <p class="hero-org">Yamunanagar, Haryana, India</p>
+            <p class="hero-title">Director, Aku92 Clinics (unit of Aku92 Medical Industries Pvt Ltd)</p>
+            <p class="hero-org">Shivaji Park Chowk, Yamunanagar, Haryana, India</p>
             <div class="hero-meta">
-                <span class="hero-meta-item"><i class="fas fa-envelope"></i> {{ config('site.email') }}</span>
-                <span class="hero-meta-item"><i class="fas fa-phone-alt"></i> {{ config('site.phone_display') }}</span>
+                <span class="hero-meta-item"><i class="fas fa-id-card"></i> HN 28044</span>
+                <span class="hero-meta-item"><i class="fas fa-envelope"></i> jainprashuka@gmail.com</span>
             </div>
-            <p class="hero-bio">Dedicated healthcare professional driving the operations and digital transformation of AKU 92. Specializing in pharmacy management, patient care, community health outreach and wellness programs across Yamunanagar.</p>
+            <p class="hero-bio">Clinical cardiologist with a fellowship from St John's Medical College Hospital, Bangalore. Trained in patient care across leading Indian hospitals, with co-authored textbook contributions in cardiology.</p>
             <div class="hero-stats">
-                <div><div class="hero-stat-num">10+</div><div class="hero-stat-label">Years Experience</div></div>
+                <div><div class="hero-stat-num">2yr</div><div class="hero-stat-label">Cardiology Fellowship</div></div>
+                <div><div class="hero-stat-num">2</div><div class="hero-stat-label">Publications</div></div>
                 <div><div class="hero-stat-num">6</div><div class="hero-stat-label">Firms Managed</div></div>
-                <div><div class="hero-stat-num">10L+</div><div class="hero-stat-label">Patients Served</div></div>
             </div>
             <div class="hero-actions">
                 <a href="#contact" class="btn-gold">Get in Touch <i class="fas fa-arrow-right"></i></a>
@@ -244,7 +255,7 @@
 <section class="section" id="about">
     <div class="container">
         <div class="section-header"><div class="section-label">About</div><h2 class="section-title">About Dr. Prashuka Jain</h2></div>
-        <p class="about-text">Dr. Prashuka Jain is a key pillar of the AKU 92 healthcare group, playing a vital role in the day-to-day management and strategic growth of the organization. With deep expertise in pharmacy operations and patient care, she ensures that every patient receives personalized attention and the best possible treatment. Carrying forward the family legacy of affordable healthcare, Dr. Prashuka combines modern digital approaches with traditional values — driving the online transformation of AKU 92 while maintaining the compassionate, patient-first philosophy that has defined the organization since 1987.</p>
+        <p class="about-text">Dr. Prashuka Jain is a clinical cardiologist and a Director at Aku92 Clinics. After completing her MBBS from Shri Guru Ram Rai Institute of Medical Sciences and Research, Dehradun, she pursued a 2-year clinical cardiology fellowship at St John's Medical College Hospital, Bangalore. Her training spans inpatient and outpatient cardiac care across leading Indian hospitals, and she has co-authored cardiology textbook chapters published by Jaypee Brothers Medical Publishers. At Aku92, she combines her clinical expertise with the family legacy of accessible, patient-first healthcare in Yamunanagar.</p>
     </div>
 </section>
 
@@ -253,53 +264,104 @@
     <div class="container">
         <div class="section-header"><div class="section-label">Education</div><h2 class="section-title">Academic Background</h2></div>
         <div class="edu-list">
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-user-graduate"></i></div><div><h4>MBBS</h4><div class="inst">Medical College, India</div><div class="loc"><i class="fas fa-map-marker-alt"></i> India</div></div></div>
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-pills"></i></div><div><h4>Pharmacy & Healthcare Management</h4><div class="inst">Specialized training in pharmacy operations and healthcare administration</div><div class="loc"><i class="fas fa-map-marker-alt"></i> India</div></div></div>
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-laptop-medical"></i></div><div><h4>Digital Health & Telemedicine</h4><div class="inst">Certification in digital healthcare delivery and online pharmacy management</div><div class="loc"><i class="fas fa-map-marker-alt"></i> India</div></div></div>
+            <div class="edu-item"><div class="edu-icon"><i class="fas fa-heart-pulse"></i></div><div><h4>Fellowship in Clinical Cardiology (2 years)</h4><div class="inst">St John's Medical College Hospital</div><div class="loc"><i class="fas fa-map-marker-alt"></i> Bangalore, India</div></div></div>
+            <div class="edu-item"><div class="edu-icon"><i class="fas fa-user-graduate"></i></div><div><h4>MBBS</h4><div class="inst">Shri Guru Ram Rai Institute of Medical Sciences and Research</div><div class="loc"><i class="fas fa-map-marker-alt"></i> Dehradun, India</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section class="section" id="experience">
+    <div class="container">
+        <div class="section-header"><div class="section-label">Experience</div><h2 class="section-title">Clinical Experience</h2></div>
+        <div class="edu-list">
+            <div class="edu-item">
+                <div class="edu-icon"><i class="fas fa-stethoscope"></i></div>
+                <div>
+                    <h4>Consultant</h4>
+                    <div class="inst">K.M Jain Hospital, Uttar Pradesh, India</div>
+                    <div class="loc">Worked 60 hours a week, with primary responsibility for management of in-patients and OPD services.</div>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-icon"><i class="fas fa-hospital-user"></i></div>
+                <div>
+                    <h4>Junior Resident</h4>
+                    <div class="inst">Vardhman Mahavir Medical College &amp; Safdarjung Hospital</div>
+                    <div class="loc"><i class="fas fa-map-marker-alt"></i> Delhi, India</div>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-icon"><i class="fas fa-user-doctor"></i></div>
+                <div>
+                    <h4>Internship</h4>
+                    <div class="inst">Babu Banarsi Das Civil Hospital</div>
+                    <div class="loc"><i class="fas fa-map-marker-alt"></i> Bulandshahr, Uttar Pradesh, India</div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Expertise -->
-<section class="section" id="expertise">
+<section class="section section-alt" id="expertise">
     <div class="container">
-        <div class="section-header"><div class="section-label">What I Do</div><h2 class="section-title">Areas of Expertise</h2></div>
+        <div class="section-header"><div class="section-label">What I Do</div><h2 class="section-title">Areas of Practice</h2></div>
         <div class="exp-grid">
             <div class="exp-card">
                 <div class="exp-card-icon"><i class="fas fa-heart-pulse"></i></div>
-                <h4>Patient Care</h4>
-                <p>Compassionate and personalized care for every patient, ensuring the best treatment outcomes.</p>
+                <h4>Clinical Cardiology</h4>
+                <p>Outpatient and inpatient cardiac care, drawing on a 2-year fellowship at St John's Medical College Hospital, Bangalore.</p>
             </div>
             <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-prescription"></i></div>
-                <h4>Pharmacy Management</h4>
-                <p>Overseeing medicine dispensing, inventory management and quality assurance across all stores.</p>
+                <div class="exp-card-icon"><i class="fas fa-wave-square"></i></div>
+                <h4>Echocardiography</h4>
+                <p>Echo-based evaluation of cardiac structure and function, with co-authored textbook contributions on right ventricle thrombosis assessment.</p>
             </div>
             <div class="exp-card">
                 <div class="exp-card-icon"><i class="fas fa-notes-medical"></i></div>
-                <h4>Health Consultation</h4>
-                <p>Guiding patients on medication, dosage, drug interactions and wellness advice.</p>
+                <h4>OPD &amp; Inpatient Care</h4>
+                <p>Hands-on hospital experience as Consultant and Junior Resident managing both OPD and in-patient services.</p>
+            </div>
+            <div class="exp-card">
+                <div class="exp-card-icon"><i class="fas fa-book-medical"></i></div>
+                <h4>Medical Education</h4>
+                <p>Co-author of an MCQ book in cardiology used by MD and DM students, plus textbook chapters on advanced cardiac topics.</p>
             </div>
             <div class="exp-card">
                 <div class="exp-card-icon"><i class="fas fa-users"></i></div>
-                <h4>Community Outreach</h4>
-                <p>Organizing health camps, awareness programs and preventive healthcare drives.</p>
+                <h4>Patient Counseling</h4>
+                <p>Guiding patients and families on cardiac risk factors, lifestyle, and long-term care planning.</p>
             </div>
             <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-laptop-medical"></i></div>
-                <h4>Digital Health</h4>
-                <p>Leading AKU 92's online transformation — medicine ordering, OPD booking and telemedicine.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-seedling"></i></div>
-                <h4>Wellness Programs</h4>
-                <p>Promoting preventive healthcare and holistic wellness through lifestyle guidance.</p>
+                <div class="exp-card-icon"><i class="fas fa-newspaper"></i></div>
+                <h4>Health Writing</h4>
+                <p>Writes articles regularly in Indian newspapers on healthcare topics for the general public.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Journey -->
+<!-- Publications -->
+<section class="section" id="publications">
+    <div class="container">
+        <div class="section-header"><div class="section-label">Author</div><h2 class="section-title">Books &amp; Publications</h2><p class="section-sub">Co-authored cardiology titles published by Jaypee Brothers Medical Publishers.</p></div>
+        <div class="pubs-grid">
+            <div class="pub-book-card">
+                <span class="pub-book-badge author">Co-Author</span>
+                <h4>MCQs in Cardiology</h4>
+                <p>Akash Jain, Prashuka Jain. Jaypee Brothers Medical Publishers, 2023. A question-bank reference for MD and DM students preparing for cardiology examinations.</p>
+            </div>
+            <div class="pub-book-card">
+                <span class="pub-book-badge chapter">Chapter</span>
+                <h4>Echocardiographic Evaluation of Thrombosis in Right Ventricle</h4>
+                <p>Sunil S Bohra, Akash Jain, Prashuka Jain. Chapter 39 in <em>Advances in CLOT Treatment (ACT) — A Textbook of Cardiology</em>. Jaypee Brothers Medical Publishers, 2023, pp. 210–213.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="section section-alt" id="journey">
     <div class="container">
         <div class="section-header"><div class="section-label">Journey</div><h2 class="section-title">Key Milestones</h2></div>
@@ -319,7 +381,7 @@
     <div class="container">
         <div class="section-header"><div class="section-label">Operations</div><h2 class="section-title">Firms Under Management</h2></div>
         <div class="firms-grid">
-            <div class="firm-card-v3"><div class="firm-role">Co-Director</div><h4>Aku92 Clinics</h4><p>Multi-specialty outpatient clinic inside Santosh Hospital, Gobindpuri.</p></div>
+            <div class="firm-card-v3"><div class="firm-role">Director</div><h4>Aku92 Clinics</h4><p>Multi-specialty outpatient clinic inside Santosh Hospital, Gobindpuri.</p></div>
             <div class="firm-card-v3"><div class="firm-role">Operations Head</div><h4>Jain Medicines</h4><p>Quality pharmacy established 1987 — affordable medicines for all.</p></div>
             <div class="firm-card-v3"><div class="firm-role">Manager</div><h4>Aku Physiotherapy</h4><p>Expert physiotherapy center at Shivaji Park Chowk, Yamunanagar.</p></div>
             <div class="firm-card-v3"><div class="firm-role">Editor</div><h4>Aku Review</h4><p>Medical publications and educational resources for professionals.</p></div>
@@ -366,9 +428,9 @@
     <div class="container">
         <div class="section-header"><div class="section-label">Contact</div><h2 class="section-title">Get in Touch</h2></div>
         <div class="contact-grid">
-            <div class="contact-card"><i class="fas fa-phone-alt"></i><h5>Phone</h5><p><a href="tel:{{ config('site.phone') }}">{{ config('site.phone_display') }}</a></p></div>
-            <div class="contact-card"><i class="fas fa-envelope"></i><h5>Email</h5><p><a href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a></p></div>
+            <div class="contact-card"><i class="fas fa-envelope"></i><h5>Email</h5><p><a href="mailto:jainprashuka@gmail.com">jainprashuka@gmail.com</a></p></div>
             <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h5>Clinic</h5><p>Aku92 Clinics, Shivaji Park Chowk, Yamunanagar, Haryana</p></div>
+            <div class="contact-card"><i class="fas fa-id-badge"></i><h5>Registration</h5><p>HN 28044<br>Haryana Medical Council</p></div>
         </div>
     </div>
 </section>
