@@ -233,7 +233,7 @@
             </div>
         </div>
         <div class="hero-photo">
-            <div class="hero-photo-frame"><img src="{{ asset('images/persons/akash-jain.jpg') }}" alt="Dr. Akash Jain"></div>
+            <div class="hero-photo-frame"><img src="{{ asset('images/persons/akash-jain.png') }}" alt="Dr. Akash Jain"></div>
             <div class="hero-photo-accent"></div>
         </div>
     </div>
