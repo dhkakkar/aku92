@@ -143,7 +143,7 @@
             font-weight: 400; letter-spacing: 1px; cursor: pointer; transition: all 0.3s;
         }
         .pub-toggle:hover { border-color: var(--gold); color: var(--gold); }
-        .pub-hidden { display: none; }
+        .pub-hidden { display: none; max-width: 900px; margin: 0 auto; }
         .pub-hidden.show { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
 
         /* ── Books ── */
