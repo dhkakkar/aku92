@@ -234,19 +234,24 @@
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-text">
-            <div class="hero-label"><span class="line"></span><span>Interventional Cardiologist</span></div>
-            <h1 class="hero-name">Dr. Akash Jain</h1>
-            <p class="hero-title">Director, Aku92 Clinics (unit of Aku92 Medical Industries Pvt Ltd)</p>
-            <p class="hero-org">Shivaji Park Chowk, Yamunanagar, Haryana, India</p>
+            <div class="hero-label"><span class="line"></span><span>{!! \App\Models\Section::getContent('akash.hero_label', 'Interventional Cardiologist') !!}</span></div>
+            <h1 class="hero-name">{!! \App\Models\Section::getContent('akash.hero_name', 'Dr. Akash Jain') !!}</h1>
+            <p class="hero-title">{!! \App\Models\Section::getContent('akash.hero_title', 'Director, Aku92 Clinics') !!}</p>
+            <p class="hero-org">{!! \App\Models\Section::getContent('akash.hero_org', 'Shivaji Park Chowk, Yamunanagar, Haryana, India') !!}</p>
             <div class="hero-meta">
-                <span class="hero-meta-item"><i class="fas fa-id-card"></i> DMC/R/14483</span>
-                <span class="hero-meta-item"><i class="fas fa-envelope"></i> drakashjain92@gmail.com</span>
+                <span class="hero-meta-item"><i class="fas fa-id-card"></i> {!! \App\Models\Section::getContent('akash.hero_registration', 'DMC/R/14483') !!}</span>
+                <span class="hero-meta-item"><i class="fas fa-envelope"></i> {!! \App\Models\Section::getContent('akash.hero_email', 'drakashjain92@gmail.com') !!}</span>
             </div>
-            <p class="hero-bio">Interventional Cardiologist trained in Spain and India. Specializing in structural heart interventions and complex coronary procedures with 35+ international publications in top journals.</p>
+            <p class="hero-bio">{!! \App\Models\Section::getContent('akash.hero_bio', 'Interventional Cardiologist trained in Spain and India.') !!}</p>
             <div class="hero-stats">
-                <div><div class="hero-stat-num">35+</div><div class="hero-stat-label">Publications</div></div>
-                <div><div class="hero-stat-num">6</div><div class="hero-stat-label">Book Chapters</div></div>
-                <div><div class="hero-stat-num">10+</div><div class="hero-stat-label">Years Experience</div></div>
+                @php
+                    $s1 = \App\Models\Section::get('akash.stat_publications');
+                    $s2 = \App\Models\Section::get('akash.stat_books');
+                    $s3 = \App\Models\Section::get('akash.stat_years');
+                @endphp
+                <div><div class="hero-stat-num">{{ $s1->content ?? '35+' }}</div><div class="hero-stat-label">{{ data_get($s1?->meta, 'label', 'Publications') }}</div></div>
+                <div><div class="hero-stat-num">{{ $s2->content ?? '6' }}</div><div class="hero-stat-label">{{ data_get($s2?->meta, 'label', 'Book Chapters') }}</div></div>
+                <div><div class="hero-stat-num">{{ $s3->content ?? '10+' }}</div><div class="hero-stat-label">{{ data_get($s3?->meta, 'label', 'Years Experience') }}</div></div>
             </div>
             <div class="hero-actions">
                 <a href="#contact" class="btn-gold">Get in Touch <i class="fas fa-arrow-right"></i></a>
@@ -262,7 +267,7 @@
 
 <section class="section" id="education">
     <div class="container">
-        <div class="section-header"><div class="section-label">Education</div><h2 class="section-title">Academic Background</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.education_label', 'Education') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.education_title', 'Academic Background') !!}</h2></div>
         <div class="edu-list">
             <div class="edu-item"><div class="edu-icon"><i class="fas fa-heart-pulse"></i></div><div><h4>Hemodynamics & Interventional Cardiology</h4><div class="inst">Hospital Clinico Universitario de Valladolid</div><div class="loc">Valladolid, Spain</div></div></div>
             <div class="edu-item"><div class="edu-icon"><i class="fas fa-award"></i></div><div><h4>DM (Fellowship), Cardiology</h4><div class="inst">Sri Jayadeva Institute of Cardiovascular Science and Research</div><div class="loc">Bangalore, India</div></div></div>
@@ -274,7 +279,7 @@
 
 <section class="section section-alt" id="expertise">
     <div class="container">
-        <div class="section-header"><div class="section-label">Specialization</div><h2 class="section-title">Areas of Expertise</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.expertise_label', 'Specialization') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.expertise_title', 'Areas of Expertise') !!}</h2></div>
         <div class="exp-grid">
             <div class="exp-block"><h3>Structural Interventions</h3><ul class="exp-list"><li><i class="fas fa-circle"></i>TAVI (Transcatheter Aortic Valve Implantation)</li><li><i class="fas fa-circle"></i>M-TEER (Mitral Transcatheter Edge to Edge Repair)</li><li><i class="fas fa-circle"></i>T-TEER (Tricuspid Transcatheter Edge to Edge Repair)</li><li><i class="fas fa-circle"></i>LAAC (Left Atrial Appendage Closure)</li></ul></div>
             <div class="exp-block"><h3>Complex Coronary Interventions</h3><ul class="exp-list"><li><i class="fas fa-circle"></i>Rotational Atherectomy</li><li><i class="fas fa-circle"></i>Orbital Atherectomy</li><li><i class="fas fa-circle"></i>Chronic Total Occlusion (CTO)</li><li><i class="fas fa-circle"></i>Intravascular Imaging (IVUS/OCT)</li></ul></div>
@@ -284,7 +289,7 @@
 
 <section class="section" id="publications">
     <div class="container">
-        <div class="section-header"><div class="section-label">Research</div><h2 class="section-title">Publications</h2><p class="section-sub">Selected peer-reviewed publications in international cardiology journals.</p></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.publications_label', 'Research') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.publications_title', 'Publications') !!}</h2><p class="section-sub">{!! \App\Models\Section::getContent('akash.publications_sub', 'Selected peer-reviewed publications in international cardiology journals.') !!}</p></div>
         <div class="pub-list">
             <div class="pub-item"><span class="pub-num">1</span><p><strong>Jain A</strong>, Montorfano M, Freeman P, Jose J, Da Costa Mj M, Abdurashid M, Gunasekaran S, Nissen H, Martin P, Seth A, et al. Four-year multicentre experience with the Myval transcatheter heart valve in Mitral, Tricuspid, and Pulmonary positions: durability and hemodynamic outcomes. <em>Asia Intervention</em>, 2026.</p></div>
             <div class="pub-item"><span class="pub-num">2</span><p>Amat-Santos IJ, Real C, Galán-Arriola C, Diz-Díaz J, Párraga R, Pérez-Camargo D, Stepanenko A, Lujan-Rodríguez F, García-Gómez M, Filgueiras-Rama D, Pereda D, Fernández-Jiménez R, García-Álvarez A, <strong>Jain A</strong>, Pensotti F, San Román JA, Ibanez B. Transcatheter aortic valve-in-mechanical valve replacement: a first-in-human study. <em>Eur Heart J</em>. 2026 Jan 30:ehag019. PMID: 41614684.</p></div>
@@ -333,7 +338,7 @@
 
 <section class="section section-alt" id="books">
     <div class="container">
-        <div class="section-header"><div class="section-label">Author</div><h2 class="section-title">Books & Chapters</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.books_label', 'Author') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.books_title', 'Books & Chapters') !!}</h2></div>
         <div class="books-grid">
             <div class="book-card"><span class="book-badge author">Author</span><h4>MCQs in Cardiology for MD/DM Students</h4><p>Jaypee Brothers, 2023.</p></div>
             <div class="book-card"><span class="book-badge chapter">Chapter</span><h4>RV Deterioration in HFpEF</h4><p>Ch. 64, Advances in HFpEF. Jaypee, 2025.</p></div>
@@ -347,7 +352,7 @@
 
 <section class="section" id="extra">
     <div class="container">
-        <div class="section-header"><div class="section-label">Beyond Medicine</div><h2 class="section-title">Extracurricular</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.extra_label', 'Beyond Medicine') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.extra_title', 'Extracurricular') !!}</h2></div>
         <div class="extra-list">
             <div class="extra-item"><i class="fas fa-circle"></i><span><strong>Spokesperson</strong>, Resident Doctor's Association, Safdarjung Hospital, Delhi. 2017-18</span></div>
             <div class="extra-item"><i class="fas fa-circle"></i><span>Routinely writing <strong>articles in daily Indian newspapers</strong> on healthcare issues.</span></div>
@@ -358,7 +363,7 @@
 
 <section class="section" id="blog">
     <div class="container">
-        <div class="section-header"><div class="section-label">Insights</div><h2 class="section-title">Latest Articles</h2><p class="section-sub">Recent writings, healthcare insights, and updates from Dr. Akash Jain.</p></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.blog_label', 'Insights') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.blog_title', 'Latest Articles') !!}</h2><p class="section-sub">{!! \App\Models\Section::getContent('akash.blog_sub', 'Recent writings, healthcare insights, and updates from Dr. Akash Jain.') !!}</p></div>
         @if(isset($blogPosts) && $blogPosts->count())
             <div class="blog-grid">
                 @foreach($blogPosts as $post)
@@ -389,7 +394,7 @@
 
 <section class="section section-alt" id="contact">
     <div class="container">
-        <div class="section-header"><div class="section-label">Contact</div><h2 class="section-title">Get in Touch</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.contact_label', 'Contact') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.contact_title', 'Get in Touch') !!}</h2></div>
         <div class="contact-grid">
             <div class="contact-card"><i class="fas fa-envelope"></i><h5>Email</h5><p><a href="mailto:drakashjain92@gmail.com">drakashjain92@gmail.com</a></p></div>
             <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h5>Clinic</h5><p>Aku92 Clinics, Shivaji Park Chowk, Yamunanagar, Haryana</p></div>

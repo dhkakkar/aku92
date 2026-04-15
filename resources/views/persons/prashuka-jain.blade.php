@@ -228,19 +228,24 @@
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-text">
-            <div class="hero-label"><span class="line"></span><span>Clinical Cardiology Physician</span></div>
-            <h1 class="hero-name">Dr. Prashuka Jain</h1>
-            <p class="hero-title">Director, Aku92 Clinics (unit of Aku92 Medical Industries Pvt Ltd)</p>
-            <p class="hero-org">Shivaji Park Chowk, Yamunanagar, Haryana, India</p>
+            <div class="hero-label"><span class="line"></span><span>{!! \App\Models\Section::getContent('prashuka.hero_label', 'Clinical Cardiology Physician') !!}</span></div>
+            <h1 class="hero-name">{!! \App\Models\Section::getContent('prashuka.hero_name', 'Dr. Prashuka Jain') !!}</h1>
+            <p class="hero-title">{!! \App\Models\Section::getContent('prashuka.hero_title', 'Director, Aku92 Clinics') !!}</p>
+            <p class="hero-org">{!! \App\Models\Section::getContent('prashuka.hero_org', 'Shivaji Park Chowk, Yamunanagar, Haryana, India') !!}</p>
             <div class="hero-meta">
-                <span class="hero-meta-item"><i class="fas fa-id-card"></i> HN 28044</span>
-                <span class="hero-meta-item"><i class="fas fa-envelope"></i> jainprashuka@gmail.com</span>
+                <span class="hero-meta-item"><i class="fas fa-id-card"></i> {!! \App\Models\Section::getContent('prashuka.hero_registration', 'HN 28044') !!}</span>
+                <span class="hero-meta-item"><i class="fas fa-envelope"></i> {!! \App\Models\Section::getContent('prashuka.hero_email', 'jainprashuka@gmail.com') !!}</span>
             </div>
-            <p class="hero-bio">Clinical Cardiology Physician with a fellowship from St John's Medical College Hospital, Bangalore. Trained in patient care across leading Indian hospitals, with co-authored textbook contributions in cardiology.</p>
+            <p class="hero-bio">{!! \App\Models\Section::getContent('prashuka.hero_bio', 'Clinical Cardiology Physician with a fellowship from St Johns Medical College Hospital.') !!}</p>
             <div class="hero-stats">
-                <div><div class="hero-stat-num">2yr</div><div class="hero-stat-label">Cardiology Fellowship</div></div>
-                <div><div class="hero-stat-num">2</div><div class="hero-stat-label">Publications</div></div>
-                <div><div class="hero-stat-num">8+</div><div class="hero-stat-label">Years Experience</div></div>
+                @php
+                    $p1 = \App\Models\Section::get('prashuka.stat_fellowship');
+                    $p2 = \App\Models\Section::get('prashuka.stat_publications');
+                    $p3 = \App\Models\Section::get('prashuka.stat_years');
+                @endphp
+                <div><div class="hero-stat-num">{{ $p1->content ?? '2yr' }}</div><div class="hero-stat-label">{{ data_get($p1?->meta, 'label', 'Cardiology Fellowship') }}</div></div>
+                <div><div class="hero-stat-num">{{ $p2->content ?? '2' }}</div><div class="hero-stat-label">{{ data_get($p2?->meta, 'label', 'Publications') }}</div></div>
+                <div><div class="hero-stat-num">{{ $p3->content ?? '8+' }}</div><div class="hero-stat-label">{{ data_get($p3?->meta, 'label', 'Years Experience') }}</div></div>
             </div>
             <div class="hero-actions">
                 <a href="#contact" class="btn-gold">Get in Touch <i class="fas fa-arrow-right"></i></a>
@@ -265,7 +270,7 @@
 <!-- Education -->
 <section class="section section-alt" id="education">
     <div class="container">
-        <div class="section-header"><div class="section-label">Education</div><h2 class="section-title">Academic Background</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.education_label', 'Education') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.education_title', 'Academic Background') !!}</h2></div>
         <div class="edu-list">
             <div class="edu-item"><div class="edu-icon"><i class="fas fa-heart-pulse"></i></div><div><h4>Fellowship in Clinical Cardiology (2 years)</h4><div class="inst">St John's Medical College Hospital</div><div class="loc"><i class="fas fa-map-marker-alt"></i> Bangalore, India</div></div></div>
             <div class="edu-item"><div class="edu-icon"><i class="fas fa-user-graduate"></i></div><div><h4>MBBS</h4><div class="inst">Shri Guru Ram Rai Institute of Medical Sciences and Research</div><div class="loc"><i class="fas fa-map-marker-alt"></i> Dehradun, India</div></div></div>
@@ -276,7 +281,7 @@
 <!-- Experience -->
 <section class="section" id="experience">
     <div class="container">
-        <div class="section-header"><div class="section-label">Experience</div><h2 class="section-title">Clinical Experience</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.experience_label', 'Experience') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.experience_title', 'Clinical Experience') !!}</h2></div>
         <div class="edu-list">
             <div class="edu-item">
                 <div class="edu-icon"><i class="fas fa-stethoscope"></i></div>
@@ -309,7 +314,7 @@
 <!-- Expertise -->
 <section class="section section-alt" id="expertise">
     <div class="container">
-        <div class="section-header"><div class="section-label">What I Do</div><h2 class="section-title">Areas of Practice</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.expertise_label', 'What I Do') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.expertise_title', 'Areas of Practice') !!}</h2></div>
         <div class="exp-grid">
             <div class="exp-card">
                 <div class="exp-card-icon"><i class="fas fa-heart-pulse"></i></div>
@@ -382,7 +387,7 @@
 <!-- Blog -->
 <section class="section section-alt" id="blog">
     <div class="container">
-        <div class="section-header"><div class="section-label">Insights</div><h2 class="section-title">Latest Articles</h2><p class="section-sub">Health tips, community outreach updates, and writings from Dr. Prashuka Jain.</p></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.blog_label', 'Insights') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.blog_title', 'Latest Articles') !!}</h2><p class="section-sub">{!! \App\Models\Section::getContent('prashuka.blog_sub', 'Health tips, community outreach updates, and writings from Dr. Prashuka Jain.') !!}</p></div>
         @if(isset($blogPosts) && $blogPosts->count())
             <div class="blog-grid">
                 @foreach($blogPosts as $post)
@@ -414,7 +419,7 @@
 <!-- Contact -->
 <section class="section" id="contact">
     <div class="container">
-        <div class="section-header"><div class="section-label">Contact</div><h2 class="section-title">Get in Touch</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.contact_label', 'Contact') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.contact_title', 'Get in Touch') !!}</h2></div>
         <div class="contact-grid">
             <div class="contact-card"><i class="fas fa-envelope"></i><h5>Email</h5><p><a href="mailto:jainprashuka@gmail.com">jainprashuka@gmail.com</a></p></div>
             <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h5>Clinic</h5><p>Aku92 Clinics, Shivaji Park Chowk, Yamunanagar, Haryana</p></div>

@@ -93,5 +93,8 @@ class DatabaseSeeder extends Seeder
                 'sort_order' => $i,
             ]);
         }
+
+        // Page sections (all editable text content)
+        $this->call(SectionSeeder::class);
     }
 }

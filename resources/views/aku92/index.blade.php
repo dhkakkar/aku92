@@ -254,9 +254,9 @@
             <div>
                 <div class="sidebar-logo">
                     <img src="{{ asset('images/logo.png') }}" alt="{{ ($site->get('site_name', 'AKU 92')) }}">
-                    <h1>AKU92</h1>
+                    <h1>{!! \App\Models\Section::getContent('aku92.sidebar_brand', 'AKU92') !!}</h1>
                 </div>
-                <div class="sidebar-tagline">Excellence in Medical Care &bull; Est. 1987</div>
+                <div class="sidebar-tagline">{!! \App\Models\Section::getContent('aku92.sidebar_tagline', 'Media & Healthcare Group') !!}</div>
             </div>
         </div>
 
@@ -308,7 +308,7 @@
             </a>
         </nav>
 
-        <div class="sidebar-footer">&copy; {{ date('Y') }} AKU 92 &bull; Yamunanagar, Haryana</div>
+        <div class="sidebar-footer">{!! \App\Models\Section::getContent('aku92.sidebar_footer', '&copy; ' . date('Y') . ' AKU 92 &bull; Yamunanagar, Haryana') !!}</div>
     </aside>
 
     <!-- Main Grid -->

@@ -8,8 +8,8 @@
 <section class="aku92-page-hero" style="background-image: url('{{ asset('images/firms/aku92-clinics.jpg') }}');">
     <div class="aku92-page-hero-overlay">
         <div class="container">
-            <h1>Aku92 Clinics</h1>
-            <p>Consultation in Cardiology at Shivaji Park Chowk, Yamunanagar</p>
+            <h1>{!! \App\Models\Section::getContent('clinics.hero_title', 'Aku92 Clinics') !!}</h1>
+            <p>{!! \App\Models\Section::getContent('clinics.hero_sub', 'Consultation in Cardiology at Shivaji Park Chowk, Yamunanagar') !!}</p>
         </div>
     </div>
 </section>
@@ -22,10 +22,9 @@
                 <img src="{{ asset('images/firms/aku92-clinics.jpg') }}" alt="Aku92 Clinics" class="img-fluid rounded shadow">
             </div>
             <div class="col-lg-6 mb-4">
-                <h2>About Our Clinics</h2>
+                <h2>{!! \App\Models\Section::getContent('clinics.about_title', 'About Our Clinics') !!}</h2>
                 <div class="aku92-divider"></div>
-                <p>Aku92 Clinics, located at Shivaji Park Chowk, Yamunanagar, provides specialized cardiology consultation and outpatient services. Our experienced doctors and modern facilities ensure that every patient receives the best possible care.</p>
-                <p>We specialize in cardiology consultations, cardiac diagnostics, physiotherapy referrals, and preventive health checkups. Part of Aku92 Medical Industries Pvt. Ltd.</p>
+                <div>{!! \App\Models\Section::getContent('clinics.about_content', '<p>Aku92 Clinics, located at Shivaji Park Chowk, Yamunanagar.</p>') !!}</div>
             </div>
         </div>
     </div>
@@ -34,16 +33,19 @@
 <!-- Doctors -->
 <section class="section section-alt">
     <div class="container">
-        @include('components.section-header', ['title' => 'Our Doctors', 'subtitle' => 'Experienced medical professionals at your service'])
+        @include('components.section-header', [
+            'title' => \App\Models\Section::getContent('clinics.doctors_title', 'Our Doctors'),
+            'subtitle' => \App\Models\Section::getContent('clinics.doctors_sub', 'Experienced medical professionals at your service')
+        ])
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="aku92-doctor-card">
                     <div class="aku92-doctor-photo">
                         <i class="fas fa-user-md fa-4x"></i>
                     </div>
-                    <h5>Dr. Prashuka Jain</h5>
-                    <p class="text-muted">Clinical Cardiology Physician</p>
-                    <p class="small">Director, Aku92 Medical Industries Pvt. Ltd. with 8+ years of experience.</p>
+                    <h5>{!! \App\Models\Section::getContent('clinics.doctor1_name', 'Dr. Prashuka Jain') !!}</h5>
+                    <p class="text-muted">{!! \App\Models\Section::getContent('clinics.doctor1_role', 'Clinical Cardiology Physician') !!}</p>
+                    <p class="small">{!! \App\Models\Section::getContent('clinics.doctor1_bio', 'Director, Aku92 Medical Industries Pvt. Ltd. with 8+ years of experience.') !!}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
@@ -51,9 +53,9 @@
                     <div class="aku92-doctor-photo">
                         <i class="fas fa-user-md fa-4x"></i>
                     </div>
-                    <h5>Consulting Specialists</h5>
-                    <p class="text-muted">Cardiology</p>
-                    <p class="small">Visiting specialists in cardiology and related specializations.</p>
+                    <h5>{!! \App\Models\Section::getContent('clinics.doctor2_name', 'Consulting Specialists') !!}</h5>
+                    <p class="text-muted">{!! \App\Models\Section::getContent('clinics.doctor2_role', 'Cardiology') !!}</p>
+                    <p class="small">{!! \App\Models\Section::getContent('clinics.doctor2_bio', 'Visiting specialists in cardiology and related specializations.') !!}</p>
                 </div>
             </div>
         </div>
@@ -63,7 +65,7 @@
 <!-- OPD Timings -->
 <section class="section">
     <div class="container">
-        @include('components.section-header', ['title' => 'OPD Timings'])
+        @include('components.section-header', ['title' => \App\Models\Section::getContent('clinics.timings_title', 'OPD Timings')])
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="aku92-timings-table">
@@ -85,11 +87,11 @@
 <!-- Location -->
 <section class="section section-alt">
     <div class="container">
-        @include('components.section-header', ['title' => 'Our Location'])
+        @include('components.section-header', ['title' => \App\Models\Section::getContent('clinics.location_title', 'Our Location')])
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4">
                 <div class="aku92-location-info">
-                    <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Address:</strong> Shivaji Park Chowk, Yamunanagar, Haryana</p>
+                    <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Address:</strong> {!! \App\Models\Section::getContent('clinics.location_address', 'Shivaji Park Chowk, Yamunanagar, Haryana') !!}</p>
                     <p><i class="fas fa-phone-alt text-primary"></i> <strong>Phone:</strong> <a href="tel:{{ ($site->get('phone', '+919416987250')) }}">{{ ($site->get('phone_display', '+91 94169 87250')) }}</a></p>
                 </div>
                 <a href="{{ url('/healthcare/opd-form') }}" class="btn btn-success btn-lg mt-3">

@@ -7,8 +7,8 @@
 <!-- Shop Hero -->
 <section class="shop-hero">
     <div class="container">
-        <h1>Our Products</h1>
-        <p>Quality medical products & supplies at affordable prices</p>
+        <h1>{!! \App\Models\Section::getContent('shop.hero_title', 'Our Products') !!}</h1>
+        <p>{!! \App\Models\Section::getContent('shop.hero_sub', 'Quality medical products & supplies at affordable prices') !!}</p>
     </div>
 </section>
 
