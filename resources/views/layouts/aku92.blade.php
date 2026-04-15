@@ -14,6 +14,7 @@
 </head>
 <body>
 
+@include('components.landing-sidebar')
 @include('components.navbar-aku92')
 
 @yield('content')

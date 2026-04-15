@@ -15,6 +15,7 @@
 </head>
 <body>
 
+@include('components.landing-sidebar')
 @include('components.navbar')
 
 @yield('content')

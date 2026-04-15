@@ -13,6 +13,7 @@
 </head>
 <body>
 
+@include('components.landing-sidebar')
 @include('components.navbar-shop')
 
 @yield('content')

@@ -244,6 +244,8 @@
 </head>
 <body>
 
+@include('components.landing-sidebar')
+
 <div class="hub">
 
     <!-- Sidebar -->

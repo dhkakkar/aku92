@@ -21,11 +21,12 @@
         img { max-width: 100%; display: block; }
 
         .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            position: fixed; top: 0; left: 64px; right: 0; z-index: 100;
             padding: 16px 5%; display: flex; align-items: center; justify-content: space-between;
             background: rgba(12,12,14,0.85); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle);
         }
+        @media (max-width: 768px) { .nav { left: 0; } }
         .nav-logo { display: flex; align-items: center; gap: 10px; }
         .nav-logo img { height: 34px; border-radius: 50%; background: #fff; padding: 3px; }
         .nav-logo span { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--gold); }
@@ -70,6 +71,8 @@
     </style>
 </head>
 <body>
+
+@include('components.landing-sidebar')
 
 <nav class="nav">
     <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ ($site->get('site_name', 'AKU 92')) }}"><span>AKU 92</span></a>
