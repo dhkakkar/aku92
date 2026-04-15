@@ -90,7 +90,7 @@
             <div class="col-lg-6 mb-4">
                 <div class="aku92-location-info">
                     <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Address:</strong> Shivaji Park Chowk, Yamunanagar, Haryana</p>
-                    <p><i class="fas fa-phone-alt text-primary"></i> <strong>Phone:</strong> <a href="tel:{{ config('site.phone') }}">{{ config('site.phone_display') }}</a></p>
+                    <p><i class="fas fa-phone-alt text-primary"></i> <strong>Phone:</strong> <a href="tel:{{ ($site->get('phone', '+919416987250')) }}">{{ ($site->get('phone_display', '+91 94169 87250')) }}</a></p>
                 </div>
                 <a href="{{ url('/healthcare/opd-form') }}" class="btn btn-success btn-lg mt-3">
                     <i class="fas fa-calendar-check"></i> Book Appointment (OPD Form)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $post->title }} — {{ config('site.name') }}</title>
+    <title>{{ $post->title }} — {{ ($site->get('site_name', 'AKU 92')) }}</title>
     @if($post->excerpt)<meta name="description" content="{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 160) }}">@endif
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -95,7 +95,7 @@
 <body>
 
 <nav class="nav">
-    <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}"><span>AKU 92</span></a>
+    <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ ($site->get('site_name', 'AKU 92')) }}"><span>AKU 92</span></a>
     <a href="{{ route('blog.owner', $post->owner) }}" class="nav-back"><i class="fas fa-arrow-left"></i> All Articles</a>
 </nav>
 
@@ -144,7 +144,7 @@
 @endif
 
 <footer class="foot">
-    <p>&copy; {{ date('Y') }} {{ config('site.name') }}.</p>
+    <p>&copy; {{ date('Y') }} {{ ($site->get('site_name', 'AKU 92')) }}.</p>
     <p>Designed by <a href="https://syscodetechnology.com" target="_blank">Syscode Technology</a></p>
 </footer>
 

@@ -21,5 +21,13 @@ class AppServiceProvider extends ServiceProvider
     {
         // Force URL prefix for subfolder deployment
         \Illuminate\Support\Facades\URL::forceRootUrl(config('app.url'));
+
+        // Share site settings with all views
+        \Illuminate\Support\Facades\View::composer('*', function ($view) {
+            $view->with('site', new class {
+                public function __get($key) { return \App\Models\SiteSetting::get($key); }
+                public function get($key, $default = null) { return \App\Models\SiteSetting::get($key, $default); }
+            });
+        });
     }
 }

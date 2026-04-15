@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Akash Jain — Interventional Cardiologist | {{ config('site.name') }}</title>
+    <title>Dr. Akash Jain — Interventional Cardiologist | {{ ($site->get('site_name', 'AKU 92')) }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     @verbatim
@@ -221,7 +221,7 @@
 <body>
 
 <nav class="nav">
-    <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}"><span>AKU 92</span></a>
+    <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ ($site->get('site_name', 'AKU 92')) }}"><span>AKU 92</span></a>
     <div class="nav-links" id="navLinks">
         <a href="#education">Education</a><a href="#expertise">Expertise</a><a href="#publications">Research</a><a href="#books">Books</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
     </div>
@@ -395,7 +395,7 @@
     </div>
 </section>
 
-<footer class="foot"><p>&copy; {{ date('Y') }} Dr. Akash Jain — {{ config('site.name') }}.</p><p>Designed by <a href="https://syscodetechnology.com" target="_blank">Syscode Technology</a></p></footer>
+<footer class="foot"><p>&copy; {{ date('Y') }} Dr. Akash Jain — {{ ($site->get('site_name', 'AKU 92')) }}.</p><p>Designed by <a href="https://syscodetechnology.com" target="_blank">Syscode Technology</a></p></footer>
 
 <script>
 window.addEventListener('scroll', () => {

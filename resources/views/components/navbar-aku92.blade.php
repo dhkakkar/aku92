@@ -12,7 +12,7 @@ $aku92Nav = [
 <nav class="navbar navbar-expand-lg navbar-dark aku92-navbar sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}" height="38" style="border-radius: 50%; background: #fff; padding: 3px;">
+            <img src="{{ asset('images/logo.png') }}" alt="{{ ($site->get('site_name', 'AKU 92')) }}" height="38" style="border-radius: 50%; background: #fff; padding: 3px;">
             <span style="font-family: var(--serif); color: var(--gold); font-size: 1rem; margin-left: 8px;">AKU 92</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#aku92Nav">

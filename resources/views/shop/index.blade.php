@@ -56,27 +56,27 @@
     <div class="container">
         <div class="row">
             @foreach($products as $product)
-            @php $discount = round((($product['original_price'] - $product['sale_price']) / $product['original_price']) * 100); @endphp
+            @php $discount = round((($product->original_price - $product->sale_price) / $product->original_price) * 100); @endphp
             <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                 <div class="shop-product-card">
-                    <a href="{{ url('/shop/product/' . $product['id']) }}" class="shop-product-link">
+                    <a href="{{ url('/shop/product/' . $product->id) }}" class="shop-product-link">
                         <div class="shop-product-img">
-                            <img src="{{ asset('images/' . $product['image']) }}" alt="{{ $product['name'] }}">
+                            <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}">
                             <span class="shop-badge">-{{ $discount }}%</span>
                         </div>
                         <div class="shop-product-info">
-                            <h5 class="shop-product-name">{{ $product['name'] }}</h5>
+                            <h5 class="shop-product-name">{{ $product->name }}</h5>
                             <div class="shop-product-rating">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                                 <span class="small text-muted">(4.5)</span>
                             </div>
                             <div class="shop-product-price">
-                                <span class="shop-sale">&#8377;{{ number_format($product['sale_price']) }}</span>
-                                <span class="shop-original">&#8377;{{ number_format($product['original_price']) }}</span>
+                                <span class="shop-sale">&#8377;{{ number_format($product->sale_price) }}</span>
+                                <span class="shop-original">&#8377;{{ number_format($product->original_price) }}</span>
                             </div>
                         </div>
                     </a>
-                    <button class="btn-shop-cart" data-id="{{ $product['id'] }}" data-name="{{ $product['name'] }}" data-price="{{ $product['sale_price'] }}" data-image="{{ asset('images/' . $product['image']) }}">
+                    <button class="btn-shop-cart" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-price="{{ $product->sale_price }}" data-image="{{ asset('images/' . $product->image) }}">
                         <i class="fas fa-cart-plus"></i> Add to Cart
                     </button>
                 </div>

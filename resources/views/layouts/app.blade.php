@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', config('site.name')) | {{ config('site.name') }}</title>
+    <title>@yield('title', ($site->get('site_name', 'AKU 92'))) | {{ ($site->get('site_name', 'AKU 92')) }}</title>
     <meta name="description" content="@yield('description', 'AKU 92 - Excellence in Medical Care. Pharmacy, Clinics, Physiotherapy & Medical Supplies in Yamunanagar.')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">

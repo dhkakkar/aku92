@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Firm;
+use App\Models\Product;
+use App\Models\Testimonial;
+
 class Aku92Controller extends Controller
 {
     public function index()
     {
-        return view('aku92.index');
+        return view('aku92.index', [
+            'firms' => Firm::active()->ordered()->get(),
+        ]);
     }
 
     public function clinics()
     {
         return view('aku92.clinics', [
-            'testimonials' => config('site.testimonials'),
+            'testimonials' => Testimonial::active()->ordered()->get(),
         ]);
     }
 
@@ -29,7 +35,7 @@ class Aku92Controller extends Controller
     public function review()
     {
         return view('aku92.review', [
-            'products' => config('site.products'),
+            'products' => Product::where('is_active', true)->get(),
         ]);
     }
 

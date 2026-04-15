@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+
 class ShopController extends Controller
 {
     public function index()
     {
         return view('shop.index', [
-            'products' => config('site.products'),
+            'products' => Product::where('is_active', true)->get(),
         ]);
     }
 
     public function show($id)
     {
-        $products = config('site.products');
-        $product = collect($products)->firstWhere('id', (int)$id);
-
-        if (!$product) {
-            abort(404);
-        }
+        $product = Product::findOrFail($id);
 
         return view('shop.product', compact('product'));
     }

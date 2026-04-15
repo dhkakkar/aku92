@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('site.name') }} — Excellence in Medical Care</title>
+    <title>{{ ($site->get('site_name', 'AKU 92')) }} — Excellence in Medical Care</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     @verbatim
@@ -359,7 +359,7 @@
         <div class="sidebar-brand">
             <div>
                 <div class="sidebar-logo">
-                    <img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}">
+                    <img src="{{ asset('images/logo.png') }}" alt="{{ ($site->get('site_name', 'AKU 92')) }}">
                     <h1>AKU92</h1>
                 </div>
                 <div class="sidebar-tagline">Media & Healthcare Group</div>

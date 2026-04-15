@@ -49,21 +49,21 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h6>Address</h6>
-                            <p>{{ config('site.address') }}</p>
+                            <p>{{ ($site->get('address', 'Yamunanagar, Haryana')) }}</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-phone-alt"></i>
                         <div>
                             <h6>Phone</h6>
-                            <p><a href="tel:{{ config('site.phone') }}">{{ config('site.phone_display') }}</a></p>
+                            <p><a href="tel:{{ ($site->get('phone', '+919416987250')) }}">{{ ($site->get('phone_display', '+91 94169 87250')) }}</a></p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h6>Email</h6>
-                            <p><a href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a></p>
+                            <p><a href="mailto:{{ ($site->get('email', 'aku92delhi@gmail.com')) }}">{{ ($site->get('email', 'aku92delhi@gmail.com')) }}</a></p>
                         </div>
                     </div>
 
@@ -87,10 +87,10 @@
             @foreach($firms as $firm)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="firm-contact-card">
-                    <h5>{{ $firm['name'] }}</h5>
-                    <p><i class="fas fa-map-marker-alt"></i> {{ $firm['address'] }}</p>
-                    @if(!empty($firm['phone']))
-                    <p><i class="fas fa-phone-alt"></i> {{ $firm['phone'] }}</p>
+                    <h5>{{ $firm->name }}</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ $firm->address }}</p>
+                    @if(!empty($firm->phone))
+                    <p><i class="fas fa-phone-alt"></i> {{ $firm->phone }}</p>
                     @endif
                     
                 </div>
