@@ -362,24 +362,24 @@
                     <img src="{{ asset('images/logo.png') }}" alt="{{ config('site.name') }}">
                     <h1>AKU92</h1>
                 </div>
-                <div class="sidebar-tagline">Excellence in Medical Care &bull; Est. 1987</div>
+                <div class="sidebar-tagline">Media & Healthcare Group</div>
             </div>
         </div>
 
         <nav class="sidebar-nav">
             <a href="{{ url('/dr-akash-jain') }}" class="sidebar-link sidebar-link--akash">
                 <div class="sidebar-link-icon"><i class="fas fa-user-md"></i></div>
-                <div class="sidebar-link-text">Dr. Akash Jain<span>Founder & Interventional Cardiologist</span></div>
+                <div class="sidebar-link-text">Dr. Akash Jain<span>Interventional Cardiologist</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
             <a href="{{ url('/dr-prashuka-jain') }}" class="sidebar-link sidebar-link--prashuka">
                 <div class="sidebar-link-icon"><i class="fas fa-heartbeat"></i></div>
-                <div class="sidebar-link-text">Dr. Prashuka Jain<span>Healthcare Professional</span></div>
+                <div class="sidebar-link-text">Dr. Prashuka Jain<span>Director &bull; Clinical Cardiology Physician</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
             <a href="{{ url('/healthcare') }}" class="sidebar-link sidebar-link--aku92">
                 <div class="sidebar-link-icon"><i class="fas fa-hospital"></i></div>
-                <div class="sidebar-link-text">AKU92<span>Clinics, Pharmacy, Physio, OPD</span></div>
+                <div class="sidebar-link-text">AKU92<span>Media & Healthcare Group</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
             <a href="{{ url('/shop') }}" class="sidebar-link sidebar-link--shop">
@@ -397,9 +397,9 @@
             <div class="card-v3-number">01</div>
             <div class="card-v3-content">
                 <div class="card-v3-icon"><i class="fas fa-user-md"></i></div>
-                <div class="card-v3-badge">Founder</div>
+                <div class="card-v3-badge">Interventional Cardiologist</div>
                 <h2 class="card-v3-title">Dr. Akash Jain</h2>
-                <p class="card-v3-desc">Pioneering affordable healthcare in Yamunanagar since 1987.</p>
+                <p class="card-v3-desc">Interventional Cardiologist specializing in structural heart interventions & complex coronary procedures.</p>
                 <div class="card-v3-cta"><span class="cta-line"></span> View Profile <i class="fas fa-arrow-right"></i></div>
             </div>
             <a href="{{ url('/dr-akash-jain') }}"></a>
@@ -409,9 +409,9 @@
             <div class="card-v3-number">02</div>
             <div class="card-v3-content">
                 <div class="card-v3-icon"><i class="fas fa-heartbeat"></i></div>
-                <div class="card-v3-badge">Professional</div>
+                <div class="card-v3-badge">Director</div>
                 <h2 class="card-v3-title">Dr. Prashuka Jain</h2>
-                <p class="card-v3-desc">Compassionate patient care and wellness champion.</p>
+                <p class="card-v3-desc">Director, Aku92 Medical Industries Pvt. Ltd. Clinical Cardiology Physician.</p>
                 <div class="card-v3-cta"><span class="cta-line"></span> View Profile <i class="fas fa-arrow-right"></i></div>
             </div>
             <a href="{{ url('/dr-prashuka-jain') }}"></a>
@@ -421,9 +421,9 @@
             <div class="card-v3-number">03</div>
             <div class="card-v3-content">
                 <div class="card-v3-icon"><i class="fas fa-hospital"></i></div>
-                <div class="card-v3-badge">Healthcare Group</div>
+                <div class="card-v3-badge">Media & Healthcare Group</div>
                 <h2 class="card-v3-title">AKU 92</h2>
-                <p class="card-v3-desc">Clinics, Medicines, Physiotherapy, Review & OPD under one roof.</p>
+                <p class="card-v3-desc">Publications, Clinics, Cardiology, Physiotherapy, Medical Supplies & Healthcare.</p>
                 <div class="card-v3-cta"><span class="cta-line"></span> Explore <i class="fas fa-arrow-right"></i></div>
             </div>
             <a href="{{ url('/healthcare') }}"></a>
@@ -433,7 +433,7 @@
             <div class="card-v3-number">04</div>
             <div class="card-v3-content">
                 <div class="card-v3-icon"><i class="fas fa-shopping-bag"></i></div>
-                <div class="card-v3-badge">Medical Store &bull; Since 1987</div>
+                <div class="card-v3-badge">Medical Products</div>
                 <h2 class="card-v3-title">Our Products</h2>
                 <p class="card-v3-desc">Quality medicines, supplies & books at affordable prices.</p>
                 <div class="card-v3-cta"><span class="cta-line"></span> Shop Now <i class="fas fa-arrow-right"></i></div>

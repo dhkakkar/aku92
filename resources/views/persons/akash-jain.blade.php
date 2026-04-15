@@ -243,7 +243,7 @@
             <div class="hero-stats">
                 <div><div class="hero-stat-num">35+</div><div class="hero-stat-label">Publications</div></div>
                 <div><div class="hero-stat-num">6</div><div class="hero-stat-label">Book Chapters</div></div>
-                <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Countries</div></div>
+                <div><div class="hero-stat-num">10+</div><div class="hero-stat-label">Years Experience</div></div>
             </div>
             <div class="hero-actions">
                 <a href="#contact" class="btn-gold">Get in Touch <i class="fas fa-arrow-right"></i></a>

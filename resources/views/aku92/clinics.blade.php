@@ -9,7 +9,7 @@
     <div class="aku92-page-hero-overlay">
         <div class="container">
             <h1>Aku92 Clinics</h1>
-            <p>Multi-specialty outpatient care inside Santosh Hospital</p>
+            <p>Consultation in Cardiology at Shivaji Park Chowk, Yamunanagar</p>
         </div>
     </div>
 </section>
@@ -24,8 +24,8 @@
             <div class="col-lg-6 mb-4">
                 <h2>About Our Clinics</h2>
                 <div class="aku92-divider"></div>
-                <p>Aku92 Clinics, located inside Santosh Hospital at Gobindpuri, Kanhaya Chowk, Yamunanagar, provides multi-specialty outpatient services. Our experienced doctors and modern facilities ensure that every patient receives the best possible care.</p>
-                <p>We specialize in general medicine, cardiology consultations, physiotherapy referrals, and preventive health checkups. With over 36 years of healthcare experience behind us, patients trust Aku92 for reliable and affordable treatment.</p>
+                <p>Aku92 Clinics, located at Shivaji Park Chowk, Yamunanagar, provides specialized cardiology consultation and outpatient services. Our experienced doctors and modern facilities ensure that every patient receives the best possible care.</p>
+                <p>We specialize in cardiology consultations, cardiac diagnostics, physiotherapy referrals, and preventive health checkups. Part of Aku92 Medical Industries Pvt. Ltd.</p>
             </div>
         </div>
     </div>
@@ -41,9 +41,9 @@
                     <div class="aku92-doctor-photo">
                         <i class="fas fa-user-md fa-4x"></i>
                     </div>
-                    <h5>Dr. Akash Jain</h5>
-                    <p class="text-muted">General Medicine</p>
-                    <p class="small">Founder of AKU 92 with 36+ years of experience in medical practice.</p>
+                    <h5>Dr. Prashuka Jain</h5>
+                    <p class="text-muted">Clinical Cardiology Physician</p>
+                    <p class="small">Director, Aku92 Medical Industries Pvt. Ltd. with 8+ years of experience.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
@@ -52,8 +52,8 @@
                         <i class="fas fa-user-md fa-4x"></i>
                     </div>
                     <h5>Consulting Specialists</h5>
-                    <p class="text-muted">Various Specializations</p>
-                    <p class="small">Visiting specialists for cardiology, orthopedics, and more.</p>
+                    <p class="text-muted">Cardiology</p>
+                    <p class="small">Visiting specialists in cardiology and related specializations.</p>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4">
                 <div class="aku92-location-info">
-                    <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Address:</strong> Inside Santosh Hospital, Gobindpuri, Kanhaya Chowk, Yamunanagar, 135001, Haryana</p>
+                    <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Address:</strong> Shivaji Park Chowk, Yamunanagar, Haryana</p>
                     <p><i class="fas fa-phone-alt text-primary"></i> <strong>Phone:</strong> <a href="tel:{{ config('site.phone') }}">{{ config('site.phone_display') }}</a></p>
                 </div>
                 <a href="{{ url('/healthcare/opd-form') }}" class="btn btn-success btn-lg mt-3">

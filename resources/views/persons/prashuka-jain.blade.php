@@ -225,7 +225,7 @@
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-text">
-            <div class="hero-label"><span class="line"></span><span>Clinical Cardiologist</span></div>
+            <div class="hero-label"><span class="line"></span><span>Clinical Cardiology Physician</span></div>
             <h1 class="hero-name">Dr. Prashuka Jain</h1>
             <p class="hero-title">Director, Aku92 Clinics (unit of Aku92 Medical Industries Pvt Ltd)</p>
             <p class="hero-org">Shivaji Park Chowk, Yamunanagar, Haryana, India</p>
@@ -233,11 +233,11 @@
                 <span class="hero-meta-item"><i class="fas fa-id-card"></i> HN 28044</span>
                 <span class="hero-meta-item"><i class="fas fa-envelope"></i> jainprashuka@gmail.com</span>
             </div>
-            <p class="hero-bio">Clinical cardiologist with a fellowship from St John's Medical College Hospital, Bangalore. Trained in patient care across leading Indian hospitals, with co-authored textbook contributions in cardiology.</p>
+            <p class="hero-bio">Clinical Cardiology Physician with a fellowship from St John's Medical College Hospital, Bangalore. Trained in patient care across leading Indian hospitals, with co-authored textbook contributions in cardiology.</p>
             <div class="hero-stats">
                 <div><div class="hero-stat-num">2yr</div><div class="hero-stat-label">Cardiology Fellowship</div></div>
                 <div><div class="hero-stat-num">2</div><div class="hero-stat-label">Publications</div></div>
-                <div><div class="hero-stat-num">6</div><div class="hero-stat-label">Firms Managed</div></div>
+                <div><div class="hero-stat-num">8+</div><div class="hero-stat-label">Years Experience</div></div>
             </div>
             <div class="hero-actions">
                 <a href="#contact" class="btn-gold">Get in Touch <i class="fas fa-arrow-right"></i></a>
@@ -372,21 +372,6 @@
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2021</div><p class="tl-text">Led the digital transformation — launched online medicine ordering platform and OPD booking system.</p></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023</div><p class="tl-text">Initiated community health camps across Yamunanagar district, serving thousands of patients.</p></div>
             <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><p class="tl-text">Expanded patient care services at newly opened Aku92 Clinics inside Santosh Hospital.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- Firms Managed -->
-<section class="section" id="firms">
-    <div class="container">
-        <div class="section-header"><div class="section-label">Operations</div><h2 class="section-title">Firms Under Management</h2></div>
-        <div class="firms-grid">
-            <div class="firm-card-v3"><div class="firm-role">Director</div><h4>Aku92 Clinics</h4><p>Multi-specialty outpatient clinic inside Santosh Hospital, Gobindpuri.</p></div>
-            <div class="firm-card-v3"><div class="firm-role">Operations Head</div><h4>Jain Medicines</h4><p>Quality pharmacy established 1987 — affordable medicines for all.</p></div>
-            <div class="firm-card-v3"><div class="firm-role">Manager</div><h4>Aku Physiotherapy</h4><p>Expert physiotherapy center at Shivaji Park Chowk, Yamunanagar.</p></div>
-            <div class="firm-card-v3"><div class="firm-role">Editor</div><h4>Aku Review</h4><p>Medical publications and educational resources for professionals.</p></div>
-            <div class="firm-card-v3"><div class="firm-role">Manager</div><h4>Jain Medical Store</h4><p>Medical supplies and equipment at D.A.V. Market, Holkar Chowk.</p></div>
-            <div class="firm-card-v3"><div class="firm-role">In-Charge</div><h4>Jan Aushadhi Store</h4><p>Government-subsidized generic medicine store for affordable healthcare.</p></div>
         </div>
     </div>
 </section>
