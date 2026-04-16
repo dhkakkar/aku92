@@ -4,7 +4,7 @@
 
 @section('content')
 
-@php $u = auth()->user(); @endphp
+@php $prefill = $prefill ?? []; @endphp
 
 <div class="shop-breadcrumb">
     <div class="container">
@@ -41,38 +41,38 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Full Name *</label>
-                                <input type="text" name="customer_name" class="form-control" value="{{ old('customer_name', $u?->name) }}" required>
+                                <input type="text" name="customer_name" class="form-control" value="{{ old('customer_name', $prefill['customer_name'] ?? '') }}" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Phone *</label>
-                                <input type="tel" name="customer_phone" class="form-control" value="{{ old('customer_phone', $u?->phone) }}" required>
+                                <input type="tel" name="customer_phone" class="form-control" value="{{ old('customer_phone', $prefill['customer_phone'] ?? '') }}" required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email *</label>
-                            <input type="email" name="customer_email" class="form-control" value="{{ old('customer_email', $u?->email) }}" required>
+                            <input type="email" name="customer_email" class="form-control" value="{{ old('customer_email', $prefill['customer_email'] ?? '') }}" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Address *</label>
-                            <textarea name="shipping_address" class="form-control" rows="2" required>{{ old('shipping_address', $u?->address) }}</textarea>
+                            <textarea name="shipping_address" class="form-control" rows="2" required>{{ old('shipping_address', $prefill['shipping_address'] ?? '') }}</textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">City *</label>
-                                <input type="text" name="city" class="form-control" value="{{ old('city', $u?->city) }}" required>
+                                <input type="text" name="city" class="form-control" value="{{ old('city', $prefill['city'] ?? '') }}" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">State *</label>
                                 <select name="state" class="form-select" required>
                                     <option value="">Select State</option>
                                     @foreach(['Haryana','Punjab','Uttar Pradesh','Delhi','Rajasthan','Other'] as $state)
-                                        <option value="{{ $state }}" @selected(old('state', $u?->state) === $state)>{{ $state }}</option>
+                                        <option value="{{ $state }}" @selected(old('state', $prefill['state'] ?? '') === $state)>{{ $state }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">Pincode *</label>
-                                <input type="text" name="pincode" class="form-control" value="{{ old('pincode', $u?->pincode) }}" maxlength="6" required>
+                                <input type="text" name="pincode" class="form-control" value="{{ old('pincode', $prefill['pincode'] ?? '') }}" maxlength="6" required>
                             </div>
                         </div>
                         <div class="mb-3">

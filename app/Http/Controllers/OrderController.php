@@ -95,6 +95,18 @@ class OrderController extends Controller
 
         DB::table('order_items')->insert($rows);
 
+        // Sync shipping address back to the logged-in user's profile for future auto-fill.
+        if ($userId = Auth::id()) {
+            DB::table('users')->where('id', $userId)->update([
+                'phone'      => $data['customer_phone'],
+                'address'    => $data['shipping_address'],
+                'city'       => $data['city'],
+                'state'      => $data['state'],
+                'pincode'    => $data['pincode'],
+                'updated_at' => $now,
+            ]);
+        }
+
         return response()->json([
             'success'      => true,
             'message'      => 'Order placed successfully.',
