@@ -38,26 +38,18 @@
             'subtitle' => \App\Models\Section::getContent('clinics.doctors_sub', 'Experienced medical professionals at your service')
         ])
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="aku92-doctor-card">
-                    <div class="aku92-doctor-photo">
-                        <i class="fas fa-user-md fa-4x"></i>
+            @foreach(\App\Models\Section::meta('clinics.doctors_list', 'items', []) as $doc)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="aku92-doctor-card">
+                        <div class="aku92-doctor-photo">
+                            <i class="fas fa-user-md fa-4x"></i>
+                        </div>
+                        <h5>{{ $doc['name'] ?? '' }}</h5>
+                        <p class="text-muted">{{ $doc['role'] ?? '' }}</p>
+                        <p class="small">{{ $doc['bio'] ?? '' }}</p>
                     </div>
-                    <h5>{!! \App\Models\Section::getContent('clinics.doctor1_name', 'Dr. Prashuka Jain') !!}</h5>
-                    <p class="text-muted">{!! \App\Models\Section::getContent('clinics.doctor1_role', 'Clinical Cardiology Physician') !!}</p>
-                    <p class="small">{!! \App\Models\Section::getContent('clinics.doctor1_bio', 'Director, Aku92 Medical Industries Pvt. Ltd. with 8+ years of experience.') !!}</p>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="aku92-doctor-card">
-                    <div class="aku92-doctor-photo">
-                        <i class="fas fa-user-md fa-4x"></i>
-                    </div>
-                    <h5>{!! \App\Models\Section::getContent('clinics.doctor2_name', 'Consulting Specialists') !!}</h5>
-                    <p class="text-muted">{!! \App\Models\Section::getContent('clinics.doctor2_role', 'Cardiology') !!}</p>
-                    <p class="small">{!! \App\Models\Section::getContent('clinics.doctor2_bio', 'Visiting specialists in cardiology and related specializations.') !!}</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -74,8 +66,13 @@
                             <tr><th>Day</th><th>Morning</th><th>Evening</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Monday – Saturday</td><td>9:00 AM – 1:00 PM</td><td>5:00 PM – 8:00 PM</td></tr>
-                            <tr><td>Sunday</td><td>10:00 AM – 12:00 PM</td><td>Closed</td></tr>
+                            @foreach(\App\Models\Section::meta('clinics.timings_list', 'items', []) as $row)
+                                <tr>
+                                    <td>{{ $row['day'] ?? '' }}</td>
+                                    <td>{{ $row['morning'] ?? '' }}</td>
+                                    <td>{{ $row['evening'] ?? '' }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

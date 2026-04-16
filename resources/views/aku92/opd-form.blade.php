@@ -11,8 +11,8 @@
                 <div class="aku92-form-wrapper">
                     <div class="text-center mb-4">
                         <i class="fas fa-file-medical fa-3x" style="color: var(--gold);"></i>
-                        <h3 class="mt-3">Patient Registration — OPD</h3>
-                        <p class="text-muted">Fill in the details below to register for outpatient services.</p>
+                        <h3 class="mt-3">{!! \App\Models\Section::getContent('opd.page_title', 'Patient Registration — OPD') !!}</h3>
+                        <p class="text-muted">{!! \App\Models\Section::getContent('opd.page_sub', 'Fill in the details below to register for outpatient services.') !!}</p>
                     </div>
 
                     <div id="opdFormAlert" class="alert d-none"></div>
