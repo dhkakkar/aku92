@@ -4,14 +4,11 @@
 
 @section('content')
 
-// Get product by ID
-$productId = (int)($_GET['id'] ?? 1);
-$product = null;
-foreach ($products as $p) {
-    if ($p['id'] === $productId) { $product = $p; break; }
-}
-if (!$product) { $product = $products[0]; }
-$discount = round((($product->original_price - $product->sale_price) / $product->original_price) * 100);
+@php
+    $discount = $product->original_price > 0
+        ? (int) round((($product->original_price - $product->sale_price) / $product->original_price) * 100)
+        : 0;
+@endphp
 
 <!-- Breadcrumb -->
 <div class="shop-breadcrumb">
@@ -54,7 +51,7 @@ $discount = round((($product->original_price - $product->sale_price) / $product-
                         <span class="shop-detail-discount">Save {{ $discount }}%</span>
                     </div>
 
-                    <p class="shop-detail-desc mb-4">High-quality medical product from AKU 92. Trusted by healthcare professionals and patients alike. All our products are 100% genuine and sourced directly from manufacturers.</p>
+                    <p class="shop-detail-desc mb-4">{{ $product->description ?: \App\Models\Section::getContent('shop.product_desc_fallback', '') }}</p>
 
                     <div class="shop-detail-qty mb-4">
                         <label class="form-label fw-semibold">Quantity</label>
@@ -76,9 +73,9 @@ $discount = round((($product->original_price - $product->sale_price) / $product-
 
                     <div class="shop-detail-features mt-4">
                         <div class="d-flex gap-4 flex-wrap">
-                            <span><i class="fas fa-truck text-success"></i> Free delivery above &#8377;500</span>
-                            <span><i class="fas fa-shield-alt text-primary"></i> Genuine product</span>
-                            <span><i class="fas fa-undo text-warning"></i> 7-day returns</span>
+                            @foreach(\App\Models\Section::meta('shop.product_features', 'items', []) as $f)
+                                <span><i class="{{ $f['icon'] ?? 'fas fa-check' }} {{ $f['color'] ?? '' }}"></i> {{ $f['text'] ?? '' }}</span>
+                            @endforeach
                         </div>
                     </div>
                 </div>

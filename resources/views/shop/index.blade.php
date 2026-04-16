@@ -20,18 +20,17 @@
                 <div class="col-lg-4 col-md-6">
                     <label class="form-label small fw-semibold">Search</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search" placeholder="Search products..." value="{{ request('search', '') }}">
+                        <input type="text" class="form-control" name="search" placeholder="{{ \App\Models\Section::getContent('shop.search_placeholder', 'Search products...') }}" value="{{ request('search', '') }}">
                         <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <label class="form-label small fw-semibold">Category</label>
                     <select class="form-select" name="category">
-                        <option value="">All Categories</option>
-                        <option value="medicines">Medicines</option>
-                        <option value="surgical">Surgical Supplies</option>
-                        <option value="books">Books & Publications</option>
-                        <option value="equipment">Equipment</option>
+                        <option value="">{{ \App\Models\Section::getContent('shop.category_all', 'All Categories') }}</option>
+                        @foreach(\App\Models\Section::meta('shop.categories', 'items', []) as $cat)
+                            <option value="{{ $cat['value'] ?? '' }}" @selected(request('category') === ($cat['value'] ?? ''))>{{ $cat['label'] ?? '' }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -44,7 +43,7 @@
                     </select>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <button class="btn btn-dark w-100" type="submit">Apply</button>
+                    <button class="btn btn-dark w-100" type="submit">{{ \App\Models\Section::getContent('shop.apply_label', 'Apply') }}</button>
                 </div>
             </div>
         </form>
@@ -90,26 +89,13 @@
 <section class="shop-info-banner">
     <div class="container">
         <div class="row text-center">
-            <div class="col-md-3 col-6 mb-3">
-                <i class="fas fa-truck fa-2x mb-2"></i>
-                <h6>Free Delivery</h6>
-                <p class="small text-muted mb-0">Orders above &#8377;500</p>
-            </div>
-            <div class="col-md-3 col-6 mb-3">
-                <i class="fas fa-shield-alt fa-2x mb-2"></i>
-                <h6>100% Genuine</h6>
-                <p class="small text-muted mb-0">Authentic products</p>
-            </div>
-            <div class="col-md-3 col-6 mb-3">
-                <i class="fas fa-undo fa-2x mb-2"></i>
-                <h6>Easy Returns</h6>
-                <p class="small text-muted mb-0">7-day return policy</p>
-            </div>
-            <div class="col-md-3 col-6 mb-3">
-                <i class="fas fa-headset fa-2x mb-2"></i>
-                <h6>24/7 Support</h6>
-                <p class="small text-muted mb-0">Call us anytime</p>
-            </div>
+            @foreach(\App\Models\Section::meta('shop.info_banner', 'items', []) as $feat)
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="{{ $feat['icon'] ?? 'fas fa-check-circle' }} fa-2x mb-2"></i>
+                    <h6>{{ $feat['title'] ?? '' }}</h6>
+                    <p class="small text-muted mb-0">{!! $feat['description'] ?? '' !!}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
