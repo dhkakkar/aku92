@@ -262,8 +262,8 @@
 <!-- About -->
 <section class="section" id="about">
     <div class="container">
-        <div class="section-header"><div class="section-label">About</div><h2 class="section-title">About Dr. Prashuka Jain</h2></div>
-        <p class="about-text">Dr. Prashuka Jain is a clinical cardiologist and a Director at Aku92 Clinics. After completing her MBBS from Shri Guru Ram Rai Institute of Medical Sciences and Research, Dehradun, she pursued a 2-year clinical cardiology fellowship at St John's Medical College Hospital, Bangalore. Her training spans inpatient and outpatient cardiac care across leading Indian hospitals, and she has co-authored cardiology textbook chapters published by Jaypee Brothers Medical Publishers. At Aku92, she combines her clinical expertise with the family legacy of accessible, patient-first healthcare in Yamunanagar.</p>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.about_label', 'About') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.about_title', 'About Dr. Prashuka Jain') !!}</h2></div>
+        <p class="about-text">{!! \App\Models\Section::getContent('prashuka.about_text', '') !!}</p>
     </div>
 </section>
 
@@ -272,8 +272,16 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.education_label', 'Education') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.education_title', 'Academic Background') !!}</h2></div>
         <div class="edu-list">
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-heart-pulse"></i></div><div><h4>Fellowship in Clinical Cardiology (2 years)</h4><div class="inst">St John's Medical College Hospital</div><div class="loc"><i class="fas fa-map-marker-alt"></i> Bangalore, India</div></div></div>
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-user-graduate"></i></div><div><h4>MBBS</h4><div class="inst">Shri Guru Ram Rai Institute of Medical Sciences and Research</div><div class="loc"><i class="fas fa-map-marker-alt"></i> Dehradun, India</div></div></div>
+            @foreach(\App\Models\Section::meta('prashuka.education_list', 'items', []) as $edu)
+                <div class="edu-item">
+                    <div class="edu-icon"><i class="{{ $edu['icon'] ?? 'fas fa-graduation-cap' }}"></i></div>
+                    <div>
+                        <h4>{{ $edu['title'] ?? '' }}</h4>
+                        <div class="inst">{{ $edu['institution'] ?? '' }}</div>
+                        <div class="loc"><i class="fas fa-map-marker-alt"></i> {{ $edu['location'] ?? '' }}</div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -283,30 +291,16 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.experience_label', 'Experience') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.experience_title', 'Clinical Experience') !!}</h2></div>
         <div class="edu-list">
-            <div class="edu-item">
-                <div class="edu-icon"><i class="fas fa-stethoscope"></i></div>
-                <div>
-                    <h4>Consultant</h4>
-                    <div class="inst">K.M Jain Hospital, Uttar Pradesh, India</div>
-                    <div class="loc">Worked 60 hours a week, with primary responsibility for management of in-patients and OPD services.</div>
+            @foreach(\App\Models\Section::meta('prashuka.experience_list', 'items', []) as $exp)
+                <div class="edu-item">
+                    <div class="edu-icon"><i class="{{ $exp['icon'] ?? 'fas fa-stethoscope' }}"></i></div>
+                    <div>
+                        <h4>{{ $exp['title'] ?? '' }}</h4>
+                        <div class="inst">{{ $exp['institution'] ?? '' }}</div>
+                        <div class="loc">{!! $exp['location'] ?? '' !!}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="edu-item">
-                <div class="edu-icon"><i class="fas fa-hospital-user"></i></div>
-                <div>
-                    <h4>Junior Resident</h4>
-                    <div class="inst">Vardhman Mahavir Medical College &amp; Safdarjung Hospital</div>
-                    <div class="loc"><i class="fas fa-map-marker-alt"></i> Delhi, India</div>
-                </div>
-            </div>
-            <div class="edu-item">
-                <div class="edu-icon"><i class="fas fa-user-doctor"></i></div>
-                <div>
-                    <h4>Internship</h4>
-                    <div class="inst">Babu Banarsi Das Civil Hospital</div>
-                    <div class="loc"><i class="fas fa-map-marker-alt"></i> Bulandshahr, Uttar Pradesh, India</div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -316,36 +310,13 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.expertise_label', 'What I Do') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.expertise_title', 'Areas of Practice') !!}</h2></div>
         <div class="exp-grid">
-            <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-heart-pulse"></i></div>
-                <h4>Clinical Cardiology</h4>
-                <p>Outpatient and inpatient cardiac care, drawing on a 2-year fellowship at St John's Medical College Hospital, Bangalore.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-wave-square"></i></div>
-                <h4>Echocardiography</h4>
-                <p>Echo-based evaluation of cardiac structure and function, with co-authored textbook contributions on right ventricle thrombosis assessment.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-notes-medical"></i></div>
-                <h4>OPD &amp; Inpatient Care</h4>
-                <p>Hands-on hospital experience as Consultant and Junior Resident managing both OPD and in-patient services.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-book-medical"></i></div>
-                <h4>Medical Education</h4>
-                <p>Co-author of an MCQ book in cardiology used by MD and DM students, plus textbook chapters on advanced cardiac topics.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-users"></i></div>
-                <h4>Patient Counseling</h4>
-                <p>Guiding patients and families on cardiac risk factors, lifestyle, and long-term care planning.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-card-icon"><i class="fas fa-newspaper"></i></div>
-                <h4>Health Writing</h4>
-                <p>Writes articles regularly in Indian newspapers on healthcare topics for the general public.</p>
-            </div>
+            @foreach(\App\Models\Section::meta('prashuka.expertise_cards', 'items', []) as $card)
+                <div class="exp-card">
+                    <div class="exp-card-icon"><i class="{{ $card['icon'] ?? 'fas fa-heart-pulse' }}"></i></div>
+                    <h4>{{ $card['title'] ?? '' }}</h4>
+                    <p>{{ $card['description'] ?? '' }}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -354,32 +325,33 @@
 <!-- Publications -->
 <section class="section" id="publications">
     <div class="container">
-        <div class="section-header"><div class="section-label">Author</div><h2 class="section-title">Books &amp; Publications</h2><p class="section-sub">Co-authored cardiology titles published by Jaypee Brothers Medical Publishers.</p></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.publications_label', 'Author') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.publications_title', 'Books &amp; Publications') !!}</h2><p class="section-sub">{!! \App\Models\Section::getContent('prashuka.publications_sub', 'Co-authored cardiology titles published by Jaypee Brothers Medical Publishers.') !!}</p></div>
         <div class="pubs-grid">
-            <div class="pub-book-card">
-                <span class="pub-book-badge author">Co-Author</span>
-                <h4>MCQs in Cardiology</h4>
-                <p>Akash Jain, Prashuka Jain. Jaypee Brothers Medical Publishers, 2023. A question-bank reference for MD and DM students preparing for cardiology examinations.</p>
-            </div>
-            <div class="pub-book-card">
-                <span class="pub-book-badge chapter">Chapter</span>
-                <h4>Echocardiographic Evaluation of Thrombosis in Right Ventricle</h4>
-                <p>Sunil S Bohra, Akash Jain, Prashuka Jain. Chapter 39 in <em>Advances in CLOT Treatment (ACT) — A Textbook of Cardiology</em>. Jaypee Brothers Medical Publishers, 2023, pp. 210–213.</p>
-            </div>
+            @foreach(\App\Models\Section::meta('prashuka.publications_list', 'items', []) as $pub)
+                @php $badgeClass = strtolower($pub['badge'] ?? '') === 'chapter' ? 'chapter' : 'author'; @endphp
+                <div class="pub-book-card">
+                    @if(!empty($pub['badge']))
+                        <span class="pub-book-badge {{ $badgeClass }}">{{ $pub['badge'] }}</span>
+                    @endif
+                    <h4>{{ $pub['title'] ?? '' }}</h4>
+                    <p>{!! $pub['body'] ?? '' !!}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
 
 <section class="section section-alt" id="journey">
     <div class="container">
-        <div class="section-header"><div class="section-label">Journey</div><h2 class="section-title">Key Milestones</h2></div>
+        <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.journey_label', 'Journey') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.journey_title', 'Key Milestones') !!}</h2></div>
         <div class="timeline">
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2015</div><p class="tl-text">Joined the AKU 92 family — bringing fresh energy and modern perspective to the healthcare mission.</p></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2018</div><p class="tl-text">Streamlined pharmacy operations at Jain Medicines, improving patient service speed and medicine availability.</p></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2020</div><p class="tl-text">Played key role in launching Jan Aushadhi generic medicine store — making healthcare affordable for all.</p></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2021</div><p class="tl-text">Led the digital transformation — launched online medicine ordering platform and OPD booking system.</p></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023</div><p class="tl-text">Initiated community health camps across Yamunanagar district, serving thousands of patients.</p></div>
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><p class="tl-text">Expanded patient care services at newly opened Aku92 Clinics inside Santosh Hospital.</p></div>
+            @foreach(\App\Models\Section::meta('prashuka.journey_list', 'items', []) as $tl)
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-year">{{ $tl['year'] ?? '' }}</div>
+                    <p class="tl-text">{!! $tl['text'] ?? '' !!}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -421,9 +393,13 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('prashuka.contact_label', 'Contact') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('prashuka.contact_title', 'Get in Touch') !!}</h2></div>
         <div class="contact-grid">
-            <div class="contact-card"><i class="fas fa-envelope"></i><h5>Email</h5><p><a href="mailto:jainprashuka@gmail.com">jainprashuka@gmail.com</a></p></div>
-            <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h5>Clinic</h5><p>Aku92 Clinics, Shivaji Park Chowk, Yamunanagar, Haryana</p></div>
-            <div class="contact-card"><i class="fas fa-id-badge"></i><h5>Registration</h5><p>HN 28044<br>Haryana Medical Council</p></div>
+            @foreach(\App\Models\Section::meta('prashuka.contact_cards', 'items', []) as $card)
+                <div class="contact-card">
+                    <i class="{{ $card['icon'] ?? 'fas fa-envelope' }}"></i>
+                    <h5>{{ $card['title'] ?? '' }}</h5>
+                    <p>{!! $card['body'] ?? '' !!}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
