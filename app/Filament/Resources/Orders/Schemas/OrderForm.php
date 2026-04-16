@@ -18,11 +18,13 @@ class OrderForm
                     TextInput::make('order_number')->disabled()->dehydrated(false),
                     Select::make('status')
                         ->options([
-                            'pending'   => 'Pending',
-                            'confirmed' => 'Confirmed',
-                            'shipped'   => 'Shipped',
-                            'delivered' => 'Delivered',
-                            'cancelled' => 'Cancelled',
+                            'pending'          => 'Pending',
+                            'confirmed'        => 'Confirmed',
+                            'shipped'          => 'Shipped',
+                            'delivered'        => 'Delivered',
+                            'cancelled'        => 'Cancelled',
+                            'return_requested' => 'Return Requested',
+                            'returned'         => 'Returned',
                         ])
                         ->required()
                         ->default('pending'),
@@ -53,9 +55,11 @@ class OrderForm
                     TextInput::make('shipping')->label('Shipping (₹)')->numeric()->disabled()->dehydrated(false),
                 ])->columns(2),
 
-            Section::make('Notes')
+            Section::make('Notes & reasons')
                 ->schema([
-                    Textarea::make('notes')->rows(3)->columnSpanFull(),
+                    Textarea::make('notes')->label('Customer notes')->rows(3)->columnSpanFull(),
+                    Textarea::make('cancel_reason')->label('Cancellation reason')->rows(2)->columnSpanFull(),
+                    Textarea::make('return_reason')->label('Return reason')->rows(2)->columnSpanFull(),
                 ]),
         ]);
     }

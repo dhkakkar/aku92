@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -47,6 +48,7 @@ class OrderController extends Controller
         $now = now();
 
         $orderId = DB::table('orders')->insertGetId([
+            'user_id'          => Auth::id(),
             'order_number'     => $orderNumber,
             'customer_name'    => $data['customer_name'],
             'customer_email'   => $data['customer_email'],

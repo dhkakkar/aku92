@@ -8,6 +8,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AccountController;
 
 // Home (standalone)
 Route::get('/', fn () => view('home'));
@@ -41,6 +43,28 @@ Route::get('/shop/order/{orderNumber}', [OrderController::class, 'success'])->na
 // Blog
 Route::get('/blog/owner/{owner}', [BlogController::class, 'ownerIndex'])->name('blog.owner');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+// Auth (guest)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Customer account panel
+Route::middleware('auth')->prefix('my-account')->name('account.')->group(function () {
+    Route::get('/', [AccountController::class, 'dashboard'])->name('dashboard');
+    Route::get('/orders', [AccountController::class, 'orders'])->name('orders');
+    Route::get('/orders/{orderNumber}', [AccountController::class, 'orderDetail'])->name('order.detail');
+    Route::post('/orders/{orderNumber}/cancel', [AccountController::class, 'cancelOrder'])->name('order.cancel');
+    Route::post('/orders/{orderNumber}/return', [AccountController::class, 'returnOrder'])->name('order.return');
+    Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+    Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/password', [AccountController::class, 'updatePassword'])->name('password.update');
+});
 
 // API endpoints
 Route::post('/api/contact', [FormController::class, 'contact']);

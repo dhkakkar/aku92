@@ -26,12 +26,14 @@ class OrdersTable
                 TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'pending'   => 'warning',
-                        'confirmed' => 'info',
-                        'shipped'   => 'primary',
-                        'delivered' => 'success',
-                        'cancelled' => 'danger',
-                        default     => 'gray',
+                        'pending'          => 'warning',
+                        'confirmed'        => 'info',
+                        'shipped'          => 'primary',
+                        'delivered'        => 'success',
+                        'cancelled'        => 'danger',
+                        'return_requested' => 'warning',
+                        'returned'         => 'gray',
+                        default            => 'gray',
                     })
                     ->sortable(),
                 TextColumn::make('created_at')->label('Placed')->dateTime('d M Y, H:i')->sortable(),
@@ -39,11 +41,13 @@ class OrdersTable
             ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('status')->options([
-                    'pending'   => 'Pending',
-                    'confirmed' => 'Confirmed',
-                    'shipped'   => 'Shipped',
-                    'delivered' => 'Delivered',
-                    'cancelled' => 'Cancelled',
+                    'pending'          => 'Pending',
+                    'confirmed'        => 'Confirmed',
+                    'shipped'          => 'Shipped',
+                    'delivered'        => 'Delivered',
+                    'cancelled'        => 'Cancelled',
+                    'return_requested' => 'Return Requested',
+                    'returned'         => 'Returned',
                 ]),
                 SelectFilter::make('payment_method')->options(['cod' => 'COD', 'online' => 'Online']),
             ])
