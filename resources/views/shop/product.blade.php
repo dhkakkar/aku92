@@ -121,7 +121,7 @@
                 @php $rd = round((($rp->original_price - $rp->sale_price) / $rp->original_price) * 100); @endphp
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="shop-product-card">
-                        <a href="{{ url('/shop/product/' . $rp->id) }}" class="shop-product-link">
+                        <a href="{{ url('/shop/product/' . ($rp->slug ?: $rp->id)) }}" class="shop-product-link">
                             <div class="shop-product-img">
                                 <img src="{{ asset('images/' . $rp->image) }}" alt="{{ $rp->name }}">
                                 <span class="shop-badge">-{{ $rd }}%</span>

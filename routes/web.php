@@ -32,7 +32,7 @@ Route::get('/healthcare/opd-form', [Aku92Controller::class, 'opdForm']);
 
 // Shop section
 Route::get('/shop', [ShopController::class, 'index']);
-Route::get('/shop/product/{id}', [ShopController::class, 'show']);
+Route::get('/shop/product/{slug}', [ShopController::class, 'show']);
 Route::get('/shop/cart', [ShopController::class, 'cart']);
 Route::get('/shop/checkout', [ShopController::class, 'checkout']);
 

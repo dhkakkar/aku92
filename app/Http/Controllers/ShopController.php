@@ -13,9 +13,11 @@ class ShopController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(string $slug)
     {
-        $product = Product::findOrFail($id);
+        $product = is_numeric($slug)
+            ? Product::findOrFail((int) $slug)
+            : Product::where('slug', $slug)->firstOrFail();
 
         return view('shop.product', compact('product'));
     }

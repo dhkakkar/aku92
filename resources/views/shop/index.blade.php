@@ -58,7 +58,7 @@
             @php $discount = round((($product->original_price - $product->sale_price) / $product->original_price) * 100); @endphp
             <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                 <div class="shop-product-card">
-                    <a href="{{ url('/shop/product/' . $product->id) }}" class="shop-product-link">
+                    <a href="{{ url('/shop/product/' . ($product->slug ?: $product->id)) }}" class="shop-product-link">
                         <div class="shop-product-img">
                             <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}">
                             <span class="shop-badge">-{{ $discount }}%</span>
