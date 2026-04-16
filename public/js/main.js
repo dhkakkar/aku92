@@ -299,6 +299,125 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ==========================================
+    // Checkout page — render cart items + submit
+    // ==========================================
+    var checkoutForm = document.getElementById('checkoutForm');
+    var checkoutItemsEl = document.getElementById('checkoutItems');
+
+    if (checkoutItemsEl) {
+        renderCheckout();
+    }
+
+    function renderCheckout() {
+        var items = Cart.getItems();
+        var emptyEl = document.getElementById('checkoutEmpty');
+
+        if (!items.length) {
+            checkoutItemsEl.innerHTML = '';
+            if (emptyEl) emptyEl.classList.remove('d-none');
+            if (checkoutForm) checkoutForm.classList.add('d-none');
+            return;
+        }
+
+        if (emptyEl) emptyEl.classList.add('d-none');
+        if (checkoutForm) checkoutForm.classList.remove('d-none');
+
+        var html = '';
+        items.forEach(function (item) {
+            html += '<div class="shop-checkout-item d-flex gap-3 mb-3">' +
+                '<img src="' + item.image + '" width="55" height="55" class="rounded" style="object-fit: cover;" alt="">' +
+                '<div class="flex-grow-1">' +
+                    '<p class="mb-0 fw-semibold small">' + item.name + '</p>' +
+                    '<p class="mb-0 text-muted small">Qty: ' + item.qty + '</p>' +
+                '</div>' +
+                '<strong>&#8377;' + (item.price * item.qty).toLocaleString('en-IN') + '</strong>' +
+            '</div>';
+        });
+        checkoutItemsEl.innerHTML = html;
+
+        var subtotal = items.reduce(function (sum, i) { return sum + (i.price * i.qty); }, 0);
+        var totalQty = items.reduce(function (sum, i) { return sum + i.qty; }, 0);
+        var shipping = subtotal >= 500 ? 0 : 40;
+        var total = subtotal + shipping;
+
+        var subEl = document.getElementById('checkoutSubtotal');
+        var shipEl = document.getElementById('checkoutShipping');
+        var totalEl = document.getElementById('checkoutTotal');
+        var itemCountEl = document.getElementById('checkoutItemCount');
+        if (subEl) subEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+        if (shipEl) shipEl.textContent = shipping === 0 ? 'Free' : '₹' + shipping;
+        if (totalEl) totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+        if (itemCountEl) itemCountEl.textContent = totalQty + ' item' + (totalQty !== 1 ? 's' : '');
+    }
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var items = Cart.getItems();
+            if (!items.length) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            var alertDiv = document.getElementById('checkoutAlert');
+            var btn = document.getElementById('placeOrderBtn');
+            var origHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Placing order...';
+            if (alertDiv) alertDiv.classList.add('d-none');
+
+            var formData = new FormData(this);
+            items.forEach(function (item, idx) {
+                formData.append('items[' + idx + '][id]', item.id);
+                formData.append('items[' + idx + '][name]', item.name);
+                formData.append('items[' + idx + '][price]', item.price);
+                formData.append('items[' + idx + '][qty]', item.qty);
+            });
+
+            var csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' },
+            })
+            .then(function (res) { return res.json().then(function (body) { return { status: res.status, body: body }; }); })
+            .then(function (response) {
+                if (response.body.success) {
+                    Cart.clear();
+                    window.location.href = response.body.redirect;
+                    return;
+                }
+                btn.disabled = false;
+                btn.innerHTML = origHtml;
+                var msg = response.body.message || 'Something went wrong. Please check the form and try again.';
+                if (response.body.errors) {
+                    var errors = Object.values(response.body.errors).flat();
+                    msg = errors.join(' ');
+                }
+                if (alertDiv) {
+                    alertDiv.classList.remove('d-none', 'alert-success');
+                    alertDiv.classList.add('alert-danger');
+                    alertDiv.textContent = msg;
+                } else {
+                    alert(msg);
+                }
+            })
+            .catch(function () {
+                btn.disabled = false;
+                btn.innerHTML = origHtml;
+                if (alertDiv) {
+                    alertDiv.classList.remove('d-none', 'alert-success');
+                    alertDiv.classList.add('alert-danger');
+                    alertDiv.textContent = 'Network error. Please try again.';
+                } else {
+                    alert('Network error. Please try again.');
+                }
+            });
+        });
+    }
+
+    // ==========================================
     // Contact Form (AJAX with CSRF)
     // ==========================================
     var contactForm = document.getElementById('contactForm');
