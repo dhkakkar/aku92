@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Section;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration {
     public function up(): void
@@ -78,17 +78,27 @@ return new class extends Migration {
             ],
         ];
 
+        $now = now();
+
         foreach ($items as $key => $data) {
-            Section::updateOrCreate(
+            DB::table('sections')->updateOrInsert(
                 ['key' => $key],
-                array_merge(['page' => 'akash-jain', 'is_active' => true], $data),
+                [
+                    'page' => 'akash-jain',
+                    'title' => $data['title'],
+                    'meta' => json_encode($data['meta']),
+                    'is_active' => true,
+                    'sort_order' => 0,
+                    'updated_at' => $now,
+                    'created_at' => $now,
+                ],
             );
         }
     }
 
     public function down(): void
     {
-        Section::whereIn('key', [
+        DB::table('sections')->whereIn('key', [
             'akash.education_list',
             'akash.expertise_blocks',
             'akash.books_list',
