@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -43,50 +43,61 @@ class OrderController extends Controller
         $shipping = $subtotal >= 500 ? 0 : 40;
         $total    = $subtotal + $shipping;
 
-        $order = DB::transaction(function () use ($data, $subtotal, $shipping, $total) {
-            $order = Order::create([
-                'customer_name'    => $data['customer_name'],
-                'customer_email'   => $data['customer_email'],
-                'customer_phone'   => $data['customer_phone'],
-                'shipping_address' => $data['shipping_address'],
-                'city'             => $data['city'],
-                'state'            => $data['state'],
-                'pincode'          => $data['pincode'],
-                'payment_method'   => $data['payment_method'],
-                'subtotal'         => $subtotal,
-                'shipping'         => $shipping,
-                'total'            => $total,
-                'status'           => 'pending',
-                'notes'            => $data['notes'] ?? null,
-            ]);
+        $orderNumber = 'AKU-' . strtoupper(uniqid());
+        $now = now();
 
-            foreach ($data['items'] as $item) {
-                $productId = is_numeric($item['id']) ? (int) $item['id'] : null;
-                $qty = (int) $item['qty'];
-                $price = (float) $item['price'];
+        $orderId = DB::table('orders')->insertGetId([
+            'order_number'     => $orderNumber,
+            'customer_name'    => $data['customer_name'],
+            'customer_email'   => $data['customer_email'],
+            'customer_phone'   => $data['customer_phone'],
+            'shipping_address' => $data['shipping_address'],
+            'city'             => $data['city'],
+            'state'            => $data['state'],
+            'pincode'          => $data['pincode'],
+            'payment_method'   => $data['payment_method'],
+            'subtotal'         => $subtotal,
+            'shipping'         => $shipping,
+            'total'            => $total,
+            'status'           => 'pending',
+            'notes'            => $data['notes'] ?? null,
+            'created_at'       => $now,
+            'updated_at'       => $now,
+        ]);
 
-                OrderItem::create([
-                    'order_id'     => $order->id,
-                    'product_id'   => $productId,
-                    'product_name' => $item['name'],
-                    'quantity'     => $qty,
-                    'price'        => $price,
-                    'total'        => $price * $qty,
-                ]);
+        $rows = [];
+        foreach ($data['items'] as $item) {
+            $productId = is_numeric($item['id']) ? (int) $item['id'] : null;
+            $qty = (int) $item['qty'];
+            $price = (float) $item['price'];
 
-                if ($productId) {
+            $rows[] = [
+                'order_id'     => $orderId,
+                'product_id'   => $productId,
+                'product_name' => $item['name'],
+                'quantity'     => $qty,
+                'price'        => $price,
+                'total'        => $price * $qty,
+                'created_at'   => $now,
+                'updated_at'   => $now,
+            ];
+
+            if ($productId) {
+                try {
                     Product::where('id', $productId)->where('stock', '>', 0)->decrement('stock', $qty);
+                } catch (\Throwable $e) {
+                    Log::warning('Stock decrement failed for product ' . $productId . ': ' . $e->getMessage());
                 }
             }
+        }
 
-            return $order;
-        });
+        DB::table('order_items')->insert($rows);
 
         return response()->json([
             'success'      => true,
             'message'      => 'Order placed successfully.',
-            'order_number' => $order->order_number,
-            'redirect'     => url('/shop/order/' . $order->order_number),
+            'order_number' => $orderNumber,
+            'redirect'     => url('/shop/order/' . $orderNumber),
         ]);
     }
 
