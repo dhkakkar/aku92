@@ -269,10 +269,16 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.education_label', 'Education') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.education_title', 'Academic Background') !!}</h2></div>
         <div class="edu-list">
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-heart-pulse"></i></div><div><h4>Hemodynamics & Interventional Cardiology</h4><div class="inst">Hospital Clinico Universitario de Valladolid</div><div class="loc">Valladolid, Spain</div></div></div>
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-award"></i></div><div><h4>DM (Fellowship), Cardiology</h4><div class="inst">Sri Jayadeva Institute of Cardiovascular Science and Research</div><div class="loc">Bangalore, India</div></div></div>
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-stethoscope"></i></div><div><h4>MD (Residency), Internal Medicine</h4><div class="inst">Vardhman Mahavir Medical College & Safdarjung Hospital</div><div class="loc">Delhi, India</div></div></div>
-            <div class="edu-item"><div class="edu-icon"><i class="fas fa-user-graduate"></i></div><div><h4>MBBS</h4><div class="inst">Vardhman Mahavir Medical College & Safdarjung Hospital</div><div class="loc">Delhi, India</div></div></div>
+            @foreach(\App\Models\Section::meta('akash.education_list', 'items', []) as $edu)
+                <div class="edu-item">
+                    <div class="edu-icon"><i class="{{ $edu['icon'] ?? 'fas fa-graduation-cap' }}"></i></div>
+                    <div>
+                        <h4>{{ $edu['title'] ?? '' }}</h4>
+                        <div class="inst">{{ $edu['institution'] ?? '' }}</div>
+                        <div class="loc">{{ $edu['location'] ?? '' }}</div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -281,8 +287,16 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.expertise_label', 'Specialization') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.expertise_title', 'Areas of Expertise') !!}</h2></div>
         <div class="exp-grid">
-            <div class="exp-block"><h3>Structural Interventions</h3><ul class="exp-list"><li><i class="fas fa-circle"></i>TAVI (Transcatheter Aortic Valve Implantation)</li><li><i class="fas fa-circle"></i>M-TEER (Mitral Transcatheter Edge to Edge Repair)</li><li><i class="fas fa-circle"></i>T-TEER (Tricuspid Transcatheter Edge to Edge Repair)</li><li><i class="fas fa-circle"></i>LAAC (Left Atrial Appendage Closure)</li></ul></div>
-            <div class="exp-block"><h3>Complex Coronary Interventions</h3><ul class="exp-list"><li><i class="fas fa-circle"></i>Rotational Atherectomy</li><li><i class="fas fa-circle"></i>Orbital Atherectomy</li><li><i class="fas fa-circle"></i>Chronic Total Occlusion (CTO)</li><li><i class="fas fa-circle"></i>Intravascular Imaging (IVUS/OCT)</li></ul></div>
+            @foreach(\App\Models\Section::meta('akash.expertise_blocks', 'items', []) as $block)
+                <div class="exp-block">
+                    <h3>{{ $block['title'] ?? '' }}</h3>
+                    <ul class="exp-list">
+                        @foreach(array_filter(array_map('trim', preg_split("/\r\n|\r|\n/", $block['bullets'] ?? ''))) as $bullet)
+                            <li><i class="fas fa-circle"></i>{{ $bullet }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -290,6 +304,22 @@
 <section class="section" id="publications">
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.publications_label', 'Research') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.publications_title', 'Publications') !!}</h2><p class="section-sub">{!! \App\Models\Section::getContent('akash.publications_sub', 'Selected peer-reviewed publications in international cardiology journals.') !!}</p></div>
+        @php $pubItems = \App\Models\Section::meta('akash.publications_list', 'items', null); @endphp
+        @if($pubItems && count($pubItems))
+            <div class="pub-list">
+                @foreach(array_slice($pubItems, 0, 5) as $i => $pub)
+                    <div class="pub-item"><span class="pub-num">{{ $i + 1 }}</span><p>{!! $pub['html'] ?? '' !!}</p></div>
+                @endforeach
+            </div>
+            @if(count($pubItems) > 5)
+                <div class="pub-hidden" id="morePubs">
+                    @foreach(array_slice($pubItems, 5) as $i => $pub)
+                        <div class="pub-item"><span class="pub-num">{{ $i + 6 }}</span><p>{!! $pub['html'] ?? '' !!}</p></div>
+                    @endforeach
+                </div>
+                <button class="pub-toggle" onclick="document.getElementById('morePubs').classList.toggle('show'); this.textContent = this.textContent.includes('More') ? 'Show Less' : 'Show More Publications'">Show More Publications</button>
+            @endif
+        @else
         <div class="pub-list">
             <div class="pub-item"><span class="pub-num">1</span><p><strong>Jain A</strong>, Montorfano M, Freeman P, Jose J, Da Costa Mj M, Abdurashid M, Gunasekaran S, Nissen H, Martin P, Seth A, et al. Four-year multicentre experience with the Myval transcatheter heart valve in Mitral, Tricuspid, and Pulmonary positions: durability and hemodynamic outcomes. <em>Asia Intervention</em>, 2026.</p></div>
             <div class="pub-item"><span class="pub-num">2</span><p>Amat-Santos IJ, Real C, Galán-Arriola C, Diz-Díaz J, Párraga R, Pérez-Camargo D, Stepanenko A, Lujan-Rodríguez F, García-Gómez M, Filgueiras-Rama D, Pereda D, Fernández-Jiménez R, García-Álvarez A, <strong>Jain A</strong>, Pensotti F, San Román JA, Ibanez B. Transcatheter aortic valve-in-mechanical valve replacement: a first-in-human study. <em>Eur Heart J</em>. 2026 Jan 30:ehag019. PMID: 41614684.</p></div>
@@ -333,6 +363,7 @@
             <div class="pub-item"><span class="pub-num">38</span><p>Arya R, Rajvanshi P, Ngullie B, Das D, Arora R, <strong>Jain A</strong>. A Case of Acute Motor-Sensory Axonal Neuropathy after Enteric Fever. <em>JMSCR</em>. 2018.</p></div>
         </div>
         <button class="pub-toggle" onclick="document.getElementById('morePubs').classList.toggle('show'); this.textContent = this.textContent.includes('More') ? 'Show Less' : 'Show More Publications'">Show More Publications</button>
+        @endif
     </div>
 </section>
 
@@ -340,12 +371,16 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.books_label', 'Author') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.books_title', 'Books & Chapters') !!}</h2></div>
         <div class="books-grid">
-            <div class="book-card"><span class="book-badge author">Author</span><h4>MCQs in Cardiology for MD/DM Students</h4><p>Jaypee Brothers, 2023.</p></div>
-            <div class="book-card"><span class="book-badge chapter">Chapter</span><h4>RV Deterioration in HFpEF</h4><p>Ch. 64, Advances in HFpEF. Jaypee, 2025.</p></div>
-            <div class="book-card"><span class="book-badge chapter">Chapter</span><h4>Challenging TAVI Cases</h4><p>Russian National Handbook, 2nd Ed. 2024.</p></div>
-            <div class="book-card"><span class="book-badge chapter">Chapter</span><h4>Braunwald 11th Ed Update</h4><p>Ch. 86, Essential Revision Guide. 2024.</p></div>
-            <div class="book-card"><span class="book-badge chapter">Chapter</span><h4>RV Thrombosis Evaluation</h4><p>Ch. 39, Advances in CLOT Treatment. 2023.</p></div>
-            <div class="book-card"><span class="book-badge chapter">Chapter</span><h4>Acute Febrile Illness</h4><p>Ch. 135, Medicine Update Vol 29. 2019.</p></div>
+            @foreach(\App\Models\Section::meta('akash.books_list', 'items', []) as $book)
+                @php $badge = strtolower($book['badge'] ?? 'chapter'); @endphp
+                <div class="book-card">
+                    @if(!empty($book['badge']))
+                        <span class="book-badge {{ $badge === 'author' ? 'author' : 'chapter' }}">{{ $book['badge'] }}</span>
+                    @endif
+                    <h4>{{ $book['title'] ?? '' }}</h4>
+                    <p>{{ $book['description'] ?? '' }}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -354,9 +389,9 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.extra_label', 'Beyond Medicine') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.extra_title', 'Extracurricular') !!}</h2></div>
         <div class="extra-list">
-            <div class="extra-item"><i class="fas fa-circle"></i><span><strong>Spokesperson</strong>, Resident Doctor's Association, Safdarjung Hospital, Delhi. 2017-18</span></div>
-            <div class="extra-item"><i class="fas fa-circle"></i><span>Routinely writing <strong>articles in daily Indian newspapers</strong> on healthcare issues.</span></div>
-            <div class="extra-item"><i class="fas fa-circle"></i><span><strong>Medical Editor</strong>: Aku Review (HARENG/2014/61876)</span></div>
+            @foreach(\App\Models\Section::meta('akash.extra_list', 'items', []) as $extra)
+                <div class="extra-item"><i class="fas fa-circle"></i><span>{!! $extra['html'] ?? '' !!}</span></div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -396,9 +431,13 @@
     <div class="container">
         <div class="section-header"><div class="section-label">{!! \App\Models\Section::getContent('akash.contact_label', 'Contact') !!}</div><h2 class="section-title">{!! \App\Models\Section::getContent('akash.contact_title', 'Get in Touch') !!}</h2></div>
         <div class="contact-grid">
-            <div class="contact-card"><i class="fas fa-envelope"></i><h5>Email</h5><p><a href="mailto:drakashjain92@gmail.com">drakashjain92@gmail.com</a></p></div>
-            <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h5>Clinic</h5><p>Aku92 Clinics, Shivaji Park Chowk, Yamunanagar, Haryana</p></div>
-            <div class="contact-card"><i class="fas fa-id-badge"></i><h5>Registration</h5><p>DMC/R/14483<br>Delhi Medical Council</p></div>
+            @foreach(\App\Models\Section::meta('akash.contact_cards', 'items', []) as $card)
+                <div class="contact-card">
+                    <i class="{{ $card['icon'] ?? 'fas fa-envelope' }}"></i>
+                    <h5>{{ $card['title'] ?? '' }}</h5>
+                    <p>{!! $card['body'] ?? '' !!}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
