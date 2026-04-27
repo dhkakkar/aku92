@@ -32,6 +32,7 @@ Route::get('/healthcare/jain-medicines', [Aku92Controller::class, 'jainMedicines
 Route::get('/healthcare/physiotherapy', [Aku92Controller::class, 'physiotherapy']);
 Route::get('/healthcare/review', [Aku92Controller::class, 'review']);
 Route::get('/healthcare/opd-form', [Aku92Controller::class, 'opdForm']);
+Route::get('/healthcare/medical-industries', [Aku92Controller::class, 'medicalIndustries']);
 
 // Shop section
 Route::get('/shop', [ShopController::class, 'index']);

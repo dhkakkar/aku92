@@ -43,4 +43,9 @@ class Aku92Controller extends Controller
     {
         return view('aku92.opd-form');
     }
+
+    public function medicalIndustries()
+    {
+        return view('aku92.medical-industries');
+    }
 }
