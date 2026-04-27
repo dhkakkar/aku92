@@ -48,4 +48,9 @@ class Aku92Controller extends Controller
     {
         return view('aku92.medical-industries');
     }
+
+    public function jainMedicalStore()
+    {
+        return view('aku92.jain-medical-store');
+    }
 }
