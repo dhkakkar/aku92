@@ -23,6 +23,7 @@ class GalleryImageForm
                     'Akash Jain'    => 'Akash Jain',
                     'Prashuka Jain' => 'Prashuka Jain',
                     'Aku92'         => 'Aku92',
+                    'Event'         => 'Event',
                 ])
                 ->native(false)
                 ->searchable()
