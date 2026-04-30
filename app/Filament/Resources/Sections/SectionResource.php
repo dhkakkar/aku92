@@ -22,6 +22,8 @@ class SectionResource extends Resource
 
     protected static ?string $navigationLabel = 'Page Sections';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $recordTitleAttribute = 'title';
 
     protected static ?int $navigationSort = 1;
