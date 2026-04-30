@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\GalleryController;
 
 // Home (standalone)
 Route::get('/', fn () => view('home'));
@@ -45,6 +46,9 @@ Route::get('/shop/order/{orderNumber}', [OrderController::class, 'success'])->na
 // Blog
 Route::get('/blog/owner/{owner}', [BlogController::class, 'ownerIndex'])->name('blog.owner');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+// Gallery
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 
 // Auth (guest)
 Route::middleware('guest')->group(function () {

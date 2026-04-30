@@ -130,6 +130,8 @@
     .aku-ls-link--aku92 .aku-ls-icon { background: rgba(16,185,129,0.12); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
     .aku-ls-link--shop { --accent: #f59e0b; }
     .aku-ls-link--shop .aku-ls-icon { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+    .aku-ls-link--gallery { --accent: #ec4899; }
+    .aku-ls-link--gallery .aku-ls-icon { background: rgba(236,72,153,0.12); color: #ec4899; border: 1px solid rgba(236,72,153,0.2); }
 
     .aku-ls-home {
         padding: 12px 14px;
@@ -233,6 +235,14 @@
             <div class="aku-ls-text">
                 <strong>Our Products</strong>
                 <span>Medical supplies &amp; books</span>
+            </div>
+        </a>
+        <a href="{{ url('/gallery') }}"
+           class="aku-ls-link aku-ls-link--gallery {{ str_starts_with($currentPath, '/gallery') ? 'is-active' : '' }}">
+            <div class="aku-ls-icon"><i class="fas fa-images"></i></div>
+            <div class="aku-ls-text">
+                <strong>Gallery</strong>
+                <span>Photos &amp; moments</span>
             </div>
         </a>
     </nav>
