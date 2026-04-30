@@ -146,6 +146,9 @@
         .sidebar-link--shop { --accent: #f59e0b; }
         .sidebar-link--shop .sidebar-link-icon { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.15); }
 
+        .sidebar-link--gallery { --accent: #ec4899; }
+        .sidebar-link--gallery .sidebar-link-icon { background: rgba(236,72,153,0.1); color: #ec4899; border: 1px solid rgba(236,72,153,0.15); }
+
         .sidebar-footer {
             padding: 18px 28px;
             border-top: 1px solid rgba(255,255,255,0.04);
@@ -385,6 +388,11 @@
             <a href="{{ url('/shop') }}" class="sidebar-link sidebar-link--shop">
                 <div class="sidebar-link-icon"><i class="fas fa-shopping-bag"></i></div>
                 <div class="sidebar-link-text">{!! \App\Models\Section::getContent('home.shop_title', 'Our Products') !!}<span>{!! \App\Models\Section::getContent('home.shop_sidebar_sub', 'Medical supplies & books') !!}</span></div>
+                <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+            <a href="{{ url('/gallery') }}" class="sidebar-link sidebar-link--gallery">
+                <div class="sidebar-link-icon"><i class="fas fa-images"></i></div>
+                <div class="sidebar-link-text">{!! \App\Models\Section::getContent('home.gallery_title', 'Gallery') !!}<span>{!! \App\Models\Section::getContent('home.gallery_sidebar_sub', 'Photos & moments') !!}</span></div>
                 <div class="sidebar-link-arrow"><i class="fas fa-arrow-right"></i></div>
             </a>
         </nav>
