@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\GalleryImages\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
@@ -16,17 +17,16 @@ class GalleryImageForm
                 ->maxLength(255)
                 ->helperText('Optional — shown as a caption on hover.'),
 
-            TextInput::make('category')
+            Select::make('category')
                 ->required()
-                ->maxLength(100)
-                ->datalist(fn () => \App\Models\GalleryImage::query()
-                    ->whereNotNull('category')
-                    ->distinct()
-                    ->pluck('category')
-                    ->filter()
-                    ->values()
-                    ->all())
-                ->helperText('Used as a tab on the public gallery (e.g. Akash Jain, Prashuka Jain, Clinics, Events).'),
+                ->options([
+                    'Akash Jain'    => 'Akash Jain',
+                    'Prashuka Jain' => 'Prashuka Jain',
+                    'Aku92'         => 'Aku92',
+                ])
+                ->native(false)
+                ->searchable()
+                ->helperText('Picks the tab the image will appear under on the public gallery.'),
 
             FileUpload::make('image')
                 ->image()
