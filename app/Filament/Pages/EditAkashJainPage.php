@@ -52,6 +52,11 @@ class EditAkashJainPage extends Page
             'hero_email' => $text('hero_email'),
             'hero_bio' => $text('hero_bio'),
 
+            // Social links
+            'social_linkedin'     => $text('social_linkedin'),
+            'social_twitter'      => $text('social_twitter'),
+            'social_researchgate' => $text('social_researchgate'),
+
             // Stats
             'stat_publications_value' => $text('stat_publications'),
             'stat_publications_label' => $meta('stat_publications', 'label', 'Publications'),
@@ -115,6 +120,14 @@ class EditAkashJainPage extends Page
                     TextInput::make('hero_registration')->label('Registration ID'),
                     TextInput::make('hero_email')->label('Email'),
                     Textarea::make('hero_bio')->label('Bio')->rows(4)->columnSpanFull(),
+                ])->columns(2)->collapsible(),
+
+            FormSection::make('Social Links')
+                ->description('Leave blank to hide an icon. Use the full URL (https://...).')
+                ->schema([
+                    TextInput::make('social_linkedin')->label('LinkedIn URL')->url()->prefixIcon('heroicon-m-link'),
+                    TextInput::make('social_twitter')->label('Twitter / X URL')->url()->prefixIcon('heroicon-m-link'),
+                    TextInput::make('social_researchgate')->label('ResearchGate URL')->url()->prefixIcon('heroicon-m-link')->columnSpanFull(),
                 ])->columns(2)->collapsible(),
 
             FormSection::make('Hero Stats')
@@ -280,6 +293,9 @@ class EditAkashJainPage extends Page
             'hero_registration' => 'Hero Registration',
             'hero_email' => 'Hero Email',
             'hero_bio' => 'Hero Bio',
+            'social_linkedin'     => 'Social: LinkedIn',
+            'social_twitter'      => 'Social: Twitter / X',
+            'social_researchgate' => 'Social: ResearchGate',
             'education_label' => 'Education Section Label',
             'education_title' => 'Education Section Title',
             'expertise_label' => 'Expertise Section Label',
