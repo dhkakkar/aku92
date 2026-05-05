@@ -68,14 +68,6 @@
         .hero-meta { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
         .hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--mid); }
         .hero-meta-item i { color: var(--gold); font-size: 0.7rem; }
-        .hero-social { display: flex; gap: 10px; margin-bottom: 22px; }
-        .hero-social a {
-            width: 38px; height: 38px; border-radius: 50%;
-            display: inline-flex; align-items: center; justify-content: center;
-            border: 1px solid var(--border); color: var(--gold);
-            font-size: 0.9rem; transition: all 0.3s ease;
-        }
-        .hero-social a:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); transform: translateY(-2px); }
         .hero-bio { font-size: 1.05rem; font-weight: 200; color: var(--gray); max-width: 540px; line-height: 1.85; margin-bottom: 28px; }
         .hero-stats {
             display: flex; gap: 40px; margin-bottom: 32px;
@@ -243,18 +235,6 @@
                 <span class="hero-meta-item"><i class="fas fa-id-card"></i> {!! \App\Models\Section::getContent('prashuka.hero_registration', 'HN 28044') !!}</span>
                 <span class="hero-meta-item"><i class="fas fa-envelope"></i> {!! \App\Models\Section::getContent('prashuka.hero_email', 'jainprashuka@gmail.com') !!}</span>
             </div>
-            @php
-                $linkedin     = \App\Models\Section::getContent('prashuka.social_linkedin');
-                $twitter      = \App\Models\Section::getContent('prashuka.social_twitter');
-                $researchgate = \App\Models\Section::getContent('prashuka.social_researchgate');
-            @endphp
-            @if($linkedin || $twitter || $researchgate)
-                <div class="hero-social">
-                    @if($linkedin)<a href="{{ $linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>@endif
-                    @if($twitter)<a href="{{ $twitter }}" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>@endif
-                    @if($researchgate)<a href="{{ $researchgate }}" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>@endif
-                </div>
-            @endif
             <p class="hero-bio">{!! \App\Models\Section::getContent('prashuka.hero_bio', 'Clinical Cardiology Physician with a fellowship from St Johns Medical College Hospital.') !!}</p>
             <div class="hero-stats">
                 @php
