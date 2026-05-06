@@ -19,9 +19,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                @php $img = \App\Models\Section::getContent('jms.products_image', 'images/firms/products.jpeg'); @endphp
-                <a href="{{ asset($img) }}" target="_blank" rel="noopener">
-                    <img src="{{ asset($img) }}" alt="Jain Medical Store — Products" class="img-fluid rounded shadow">
+                @php
+                    $img = \App\Models\Section::getContent('jms.products_image', 'images/firms/products.jpeg');
+                    $imgUrl = str_starts_with($img, 'images/') || str_starts_with($img, 'http') ? asset($img) : asset('storage/' . $img);
+                @endphp
+                <a href="{{ $imgUrl }}" target="_blank" rel="noopener">
+                    <img src="{{ $imgUrl }}" alt="Jain Medical Store — Products" class="img-fluid rounded shadow">
                 </a>
                 <p class="text-muted small mt-3">Click the image to view full size.</p>
             </div>
