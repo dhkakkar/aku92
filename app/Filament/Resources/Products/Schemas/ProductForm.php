@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Products\Schemas;
 
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
@@ -33,8 +33,9 @@ class ProductForm
                     ->helperText('Path under /public/images/, e.g. products/example.jpg.')
                     ->columnSpanFull(),
 
-                Textarea::make('description')
-                    ->rows(4)
+                RichEditor::make('description')
+                    ->toolbarButtons(['bold', 'italic', 'underline', 'bulletList', 'orderedList', 'link', 'h2', 'h3', 'blockquote', 'redo', 'undo'])
+                    ->helperText('Used as the short summary above the price and the full content of the Description tab on the product detail page.')
                     ->columnSpanFull(),
 
                 TextInput::make('original_price')

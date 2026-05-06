@@ -40,10 +40,21 @@
                 <div class="shop-detail-info">
                     <h1 class="shop-detail-name">{{ $product->name }}</h1>
 
-                    <div class="shop-detail-rating mb-3">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        <span class="text-muted ms-2">(4.5 stars &bull; 24 reviews)</span>
-                    </div>
+                    @php
+                        $reviewsForHeader = \App\Models\Testimonial::active()->get();
+                        $avgRating = $reviewsForHeader->count() ? round($reviewsForHeader->avg('rating'), 1) : null;
+                    @endphp
+                    @if($reviewsForHeader->count())
+                        <div class="shop-detail-rating mb-3">
+                            @for($i = 1; $i <= 5; $i++)
+                                @if($avgRating >= $i)<i class="fas fa-star"></i>
+                                @elseif($avgRating >= $i - 0.5)<i class="fas fa-star-half-alt"></i>
+                                @else<i class="far fa-star"></i>
+                                @endif
+                            @endfor
+                            <span class="text-muted ms-2">({{ $avgRating }} stars &bull; {{ $reviewsForHeader->count() }} {{ \Illuminate\Support\Str::plural('review', $reviewsForHeader->count()) }})</span>
+                        </div>
+                    @endif
 
                     <div class="shop-detail-price mb-4">
                         <span class="shop-detail-sale">&#8377;{{ number_format($product->sale_price) }}</span>
@@ -51,7 +62,7 @@
                         <span class="shop-detail-discount">Save {{ $discount }}%</span>
                     </div>
 
-                    <p class="shop-detail-desc mb-4">{{ $product->description ?: \App\Models\Section::getContent('shop.product_desc_fallback', '') }}</p>
+                    <div class="shop-detail-desc mb-4">{!! $product->description ?: \App\Models\Section::getContent('shop.product_desc_fallback', '') !!}</div>
 
                     <div class="shop-detail-qty mb-4">
                         <label class="form-label fw-semibold">Quantity</label>
@@ -82,32 +93,33 @@
             </div>
         </div>
 
+        @php $reviews = \App\Models\Testimonial::active()->ordered()->get(); @endphp
         <!-- Tabs: Description / Reviews -->
         <div class="shop-detail-tabs mt-5">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#descTab">Description</a></li>
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#reviewsTab">Reviews (24)</a></li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#reviewsTab">Reviews ({{ $reviews->count() }})</a></li>
             </ul>
             <div class="tab-content p-4">
                 <div class="tab-pane fade show active" id="descTab">
-                    <p>This is a premium product from AKU 92's curated medical supply line. It meets all quality standards and is sourced directly from certified manufacturers.</p>
-                    <ul>
-                        <li>100% genuine and certified</li>
-                        <li>Manufactured under strict quality controls</li>
-                        <li>Suitable for clinical and personal use</li>
-                        <li>Recommended by healthcare professionals</li>
-                    </ul>
+                    @if($product->description)
+                        {!! $product->description !!}
+                    @else
+                        <p class="text-muted">No description added yet.</p>
+                    @endif
                 </div>
                 <div class="tab-pane fade" id="reviewsTab">
-                    @foreach(\App\Models\Testimonial::active()->ordered()->get() as $t)
-                    <div class="shop-review mb-3 pb-3 border-bottom">
-                        <div class="d-flex align-items-center gap-2 mb-2">
-                            <strong>{{ $t['name'] }}</strong>
-                            <span class="text-warning">@for($i=0;$i<$t['rating'];$i++)<i class="fas fa-star"></i>@endfor</span>
+                    @forelse($reviews as $t)
+                        <div class="shop-review mb-3 pb-3 border-bottom">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <strong>{{ $t->name }}</strong>
+                                <span class="text-warning">@for($i=0;$i<$t->rating;$i++)<i class="fas fa-star"></i>@endfor</span>
+                            </div>
+                            <p class="mb-0 text-muted">"{{ $t->text }}"</p>
                         </div>
-                        <p class="mb-0 text-muted">"{{ $t['text'] }}"</p>
-                    </div>
-                    @endforeach
+                    @empty
+                        <p class="text-muted mb-0">No reviews yet.</p>
+                    @endforelse
                 </div>
             </div>
         </div>
