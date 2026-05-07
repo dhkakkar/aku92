@@ -14,6 +14,7 @@
 <body>
 
 @include('components.landing-sidebar')
+@include('components.floating-cta')
 @include('components.navbar-shop')
 
 @yield('content')

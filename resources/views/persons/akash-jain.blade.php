@@ -229,6 +229,7 @@
 <body>
 
 @include('components.landing-sidebar')
+@include('components.floating-cta')
 
 <nav class="nav">
     <a href="{{ url('/') }}" class="nav-logo"><img src="{{ asset('images/logo.png') }}" alt="{{ ($site->get('site_name', 'AKU 92')) }}"><span>AKU 92</span></a>

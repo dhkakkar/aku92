@@ -452,5 +452,7 @@
 
 </div>
 
+@include('components.floating-cta')
+
 </body>
 </html>

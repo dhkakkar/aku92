@@ -130,6 +130,7 @@
 <body>
 
 @include('components.landing-sidebar')
+@include('components.floating-cta')
 
 <nav class="gallery-nav">
     <a href="{{ url('/') }}" class="gallery-logo">

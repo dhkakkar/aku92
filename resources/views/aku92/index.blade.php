@@ -244,6 +244,7 @@
 <body>
 
 @include('components.landing-sidebar')
+@include('components.floating-cta')
 
 <div class="hub">
 
