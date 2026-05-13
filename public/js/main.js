@@ -429,10 +429,11 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
+            var csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
             fetch(this.action, {
                 method: 'POST',
                 body: formData,
-                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' }
             })
             .then(function (res) { return res.json(); })
             .then(function (data) {
@@ -466,10 +467,11 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
+            var csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
             fetch(this.action, {
                 method: 'POST',
                 body: formData,
-                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' }
             })
             .then(function (res) { return res.json(); })
             .then(function (data) {

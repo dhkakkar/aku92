@@ -17,7 +17,8 @@
 
                     <div id="opdFormAlert" class="alert d-none"></div>
 
-                    <form id="opdForm" action="{{ url('/api/opd.php') }}" method="POST">
+                    <form id="opdForm" action="{{ url('/api/opd') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="patient_name" class="form-label">Patient Name *</label>
