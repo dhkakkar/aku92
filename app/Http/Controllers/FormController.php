@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OpdFormSubmitted;
 use App\Models\ContactMessage;
 use App\Models\OpdForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class FormController extends Controller
 {
@@ -18,7 +22,12 @@ class FormController extends Controller
             'phone' => 'nullable|string|max:20',
         ]);
 
-        ContactMessage::create($validated);
+        $now = now();
+        DB::table('contact_messages')->insert(array_merge($validated, [
+            'is_read'    => false,
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]));
 
         return response()->json([
             'success' => true,
@@ -37,7 +46,25 @@ class FormController extends Controller
             'description' => 'required|string|max:2000',
         ]);
 
-        OpdForm::create($validated);
+        $now = now();
+        $id = DB::table('opd_forms')->insertGetId(array_merge($validated, [
+            'status'     => 'pending',
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]));
+
+        // Best-effort: notify admins by email. If SMTP fails, swallow so submission still succeeds.
+        try {
+            $opd = OpdForm::find($id);
+            if ($opd) {
+                $recipients = array_filter(array_map('trim', explode(',', (string) config('mail.opd_notification_to'))));
+                if (! empty($recipients)) {
+                    Mail::to($recipients)->send(new OpdFormSubmitted($opd));
+                }
+            }
+        } catch (\Throwable $e) {
+            Log::warning('OPD email notification failed: ' . $e->getMessage());
+        }
 
         return response()->json([
             'success' => true,

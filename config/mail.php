@@ -115,4 +115,16 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | OPD Notification Recipients
+    |--------------------------------------------------------------------------
+    |
+    | Comma-separated list of email addresses that receive every OPD form
+    | submission. Falls back to MAIL_FROM_ADDRESS so an explicit env var
+    | isn't required.
+    */
+
+    'opd_notification_to' => env('OPD_NOTIFICATION_EMAIL', env('MAIL_FROM_ADDRESS')),
+
 ];
