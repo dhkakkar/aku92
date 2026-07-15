@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateCartSummary(items) {
         var subtotal = items.reduce(function (sum, i) { return sum + (i.price * i.qty); }, 0);
         var totalQty = items.reduce(function (sum, i) { return sum + i.qty; }, 0);
-        var shipping = subtotal >= 500 ? 0 : 40;
+        var shipping = 0;
         var total = subtotal + shipping;
 
         var subtotalEl = document.getElementById('cartSubtotal');
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var subtotal = items.reduce(function (sum, i) { return sum + (i.price * i.qty); }, 0);
         var totalQty = items.reduce(function (sum, i) { return sum + i.qty; }, 0);
-        var shipping = subtotal >= 500 ? 0 : 40;
+        var shipping = 0;
         var total = subtotal + shipping;
 
         var subEl = document.getElementById('checkoutSubtotal');
@@ -348,6 +348,78 @@ document.addEventListener('DOMContentLoaded', function () {
         if (shipEl) shipEl.textContent = shipping === 0 ? 'Free' : '₹' + shipping;
         if (totalEl) totalEl.textContent = '₹' + total.toLocaleString('en-IN');
         if (itemCountEl) itemCountEl.textContent = totalQty + ' item' + (totalQty !== 1 ? 's' : '');
+    }
+
+    function showCheckoutMsg(alertDiv, msg, type) {
+        if (alertDiv) {
+            alertDiv.classList.remove('d-none', 'alert-success', 'alert-danger');
+            alertDiv.classList.add(type === 'success' ? 'alert-success' : 'alert-danger');
+            alertDiv.textContent = msg;
+            alertDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            alert(msg);
+        }
+    }
+
+    function openRazorpayCheckout(rp, btn, origHtml, alertDiv) {
+        if (typeof Razorpay === 'undefined') {
+            btn.disabled = false;
+            btn.innerHTML = origHtml;
+            showCheckoutMsg(alertDiv, 'Payment library failed to load. Please refresh the page and try again.', 'danger');
+            return;
+        }
+        var csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+        var options = {
+            key: rp.key,
+            amount: rp.amount,
+            currency: rp.currency,
+            name: rp.name,
+            description: rp.description,
+            order_id: rp.order_id,
+            prefill: rp.prefill,
+            theme: { color: '#1f8a4c' },
+            handler: function (resp) {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying payment...';
+                var fd = new FormData();
+                fd.append('order_number', rp.order_number);
+                fd.append('razorpay_order_id', resp.razorpay_order_id);
+                fd.append('razorpay_payment_id', resp.razorpay_payment_id);
+                fd.append('razorpay_signature', resp.razorpay_signature);
+                fetch(rp.verify_url, {
+                    method: 'POST',
+                    body: fd,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' }
+                })
+                .then(function (r) { return r.json(); })
+                .then(function (v) {
+                    if (v.success) {
+                        Cart.clear();
+                        window.location.href = v.redirect;
+                    } else {
+                        btn.disabled = false;
+                        btn.innerHTML = origHtml;
+                        showCheckoutMsg(alertDiv, v.message || 'Payment verification failed.', 'danger');
+                    }
+                })
+                .catch(function () {
+                    btn.disabled = false;
+                    btn.innerHTML = origHtml;
+                    showCheckoutMsg(alertDiv, 'Payment verification error. If money was deducted, please contact us with your order number.', 'danger');
+                });
+            },
+            modal: {
+                ondismiss: function () {
+                    btn.disabled = false;
+                    btn.innerHTML = origHtml;
+                    showCheckoutMsg(alertDiv, 'Payment was cancelled. Your order is not confirmed yet — you can try again.', 'danger');
+                }
+            }
+        };
+        var rzp = new Razorpay(options);
+        rzp.on('payment.failed', function (resp) {
+            showCheckoutMsg(alertDiv, 'Payment failed: ' + ((resp.error && resp.error.description) ? resp.error.description : 'please try again.'), 'danger');
+        });
+        rzp.open();
     }
 
     if (checkoutForm) {
@@ -383,6 +455,10 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(function (res) { return res.json().then(function (body) { return { status: res.status, body: body }; }); })
             .then(function (response) {
+                if (response.body.razorpay) {
+                    openRazorpayCheckout(response.body.razorpay, btn, origHtml, alertDiv);
+                    return;
+                }
                 if (response.body.success) {
                     Cart.clear();
                     window.location.href = response.body.redirect;

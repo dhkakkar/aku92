@@ -82,20 +82,12 @@
 
                         <h4 class="mb-3 mt-4"><i class="fas fa-credit-card"></i> Payment Method</h4>
                         <div class="shop-payment-options">
-                            <div class="form-check shop-payment-option mb-3">
-                                <input class="form-check-input" type="radio" name="payment_method" id="cod" value="cod" checked>
-                                <label class="form-check-label" for="cod">
-                                    <i class="fas fa-money-bill-wave text-success me-2"></i>
-                                    <strong>Cash on Delivery (COD)</strong>
-                                    <span class="d-block small text-muted">Pay when you receive the order</span>
-                                </label>
-                            </div>
                             <div class="form-check shop-payment-option">
-                                <input class="form-check-input" type="radio" name="payment_method" id="online" value="online" disabled>
-                                <label class="form-check-label text-muted" for="online">
-                                    <i class="fas fa-mobile-alt me-2"></i>
-                                    <strong>Online Payment (UPI/Card)</strong>
-                                    <span class="d-block small">Coming soon</span>
+                                <input class="form-check-input" type="radio" name="payment_method" id="online" value="online" checked>
+                                <label class="form-check-label" for="online">
+                                    <i class="fas fa-lock text-success me-2"></i>
+                                    <strong>Pay Online (UPI / Card / Netbanking)</strong>
+                                    <span class="d-block small text-muted">100% secure payment powered by Razorpay</span>
                                 </label>
                             </div>
                         </div>
@@ -121,7 +113,7 @@
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Shipping</span>
-                            <span id="checkoutShipping">₹40</span>
+                            <span id="checkoutShipping">Free</span>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between mb-3">
@@ -138,4 +130,6 @@
         </form>
     </div>
 </section>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 @endsection

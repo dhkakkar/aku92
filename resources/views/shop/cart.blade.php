@@ -48,7 +48,7 @@
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span>Shipping</span>
-                        <span id="cartShipping">₹40</span>
+                        <span id="cartShipping">Free</span>
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between mb-3">

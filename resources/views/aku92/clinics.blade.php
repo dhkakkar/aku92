@@ -17,11 +17,14 @@
 <!-- About -->
 <section class="section">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4">
-                <img src="{{ asset('images/firms/aku92-clinics.jpg') }}" alt="Aku92 Clinics" class="img-fluid rounded shadow">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-4">
+                <a href="{{ asset('images/firms/aku92-clinics.jpg') }}" target="_blank" rel="noopener">
+                    <img src="{{ asset('images/firms/aku92-clinics.jpg') }}" alt="Aku92 Clinics" class="img-fluid rounded shadow" style="max-width: 1000px; width: 100%;">
+                </a>
+                <div class="small text-muted mt-2"><i class="fas fa-search-plus"></i> Tap image to view full size</div>
             </div>
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-10">
                 <h2>{!! \App\Models\Section::getContent('clinics.about_title', 'About Our Clinics') !!}</h2>
                 <div class="aku92-divider"></div>
                 <div>{!! \App\Models\Section::getContent('clinics.about_content', '<p>Aku92 Clinics, located at Shivaji Park Chowk, Yamunanagar.</p>') !!}</div>

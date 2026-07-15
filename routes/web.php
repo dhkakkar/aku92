@@ -76,3 +76,4 @@ Route::middleware('auth')->prefix('my-account')->name('account.')->group(functio
 Route::post('/api/contact', [FormController::class, 'contact']);
 Route::post('/api/opd', [FormController::class, 'opd']);
 Route::post('/api/orders', [OrderController::class, 'store']);
+Route::post('/api/orders/verify', [OrderController::class, 'verify']);

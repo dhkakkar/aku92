@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') . '?v=' . @filemtime(public_path('css/style.css')) }}" rel="stylesheet">
+    <link href="{{ asset('css/shop.css') . '?v=' . @filemtime(public_path('css/shop.css')) }}" rel="stylesheet">
 </head>
 <body>
 
